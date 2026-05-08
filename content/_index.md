@@ -13,9 +13,9 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Trung Thanh---- Test deploy
+&emsp; **Full Name:** Nguyen Trung Thanh---- Test deployyy
 
-&emsp; **Phone Number:** 09357966
+&emsp; **Phone Number:** 0935796604
 
 &emsp; **Email:** trungthanh070104@gmail.com
 
