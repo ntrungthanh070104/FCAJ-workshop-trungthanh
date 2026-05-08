@@ -13,7 +13,7 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Trung Thanh---- Test 
+&emsp; **Full Name:** Nguyen Trung Thanh
 
 &emsp; **Phone Number:** 0935796604
 
@@ -31,7 +31,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 17/04/2026 to 10/07/2026
 
-![Your profile picture](/images/avatar.png)
+![Your profile picture](/images/Thanh.png)
 
 ### Report Content
 
