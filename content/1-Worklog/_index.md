@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 This page summarizes the **12-week** internship work log at AWS Vietnam (17/04/2026 – 30/07/2026), focusing on AWS learning and the **Vertex IntervAI** Workshop project.
 
 **Week 1:** [Getting started with AWS, account setup and Console/CLI](1.1-week1/)

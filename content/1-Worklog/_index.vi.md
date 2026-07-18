@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 **Trong trang này** ghi lại nhật ký công việc thực tập tại AWS Vietnam trong **12 tuần** (17/04/2026 – 30/07/2026), tập trung vào học AWS và phát triển dự án Workshop **Vertex IntervAI**.
 
 **Tuần 1:** [Làm quen AWS, tạo tài khoản và khám phá Console/CLI](1.1-week1/)
