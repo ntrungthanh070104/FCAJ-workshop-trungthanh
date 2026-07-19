@@ -1,40 +1,76 @@
 ---
-title : "Create a gateway endpoint"
-date : 2024-01-01 
+title : "Create S3 Buckets and DynamoDB Tables"
+date : 2024-01-01
 weight : 1
 chapter : false
 pre : " <b> 5.3.1 </b> "
 ---
 
-1. Open the [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. In the navigation pane, choose **Endpoints**, then click **Create Endpoint**:
+#### Step 1: Choose the AWS Region
 
-{{% notice note %}}
-You will see **6 existing VPC endpoints** that support **AWS Systems Manager (SSM)**. These endpoints were deployed automatically by the **CloudFormation Templates** for this workshop.
-{{% /notice %}}
+Use one primary region for the first deployment. Keep Lambda, API Gateway, S3, DynamoDB, Cognito, Polly, Transcribe, and Bedrock configuration consistent. If the Bedrock model is only available in a different region, set `BEDROCK_REGION` explicitly for the Lambda functions that invoke Bedrock.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+#### Step 2: Create S3 storage
 
-3. In the Create endpoint console:
-+ Specify name of the endpoint: ```s3-gwe```
-+ In service category, choose **AWS services**
+Create one or two S3 buckets:
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+- `CV_BUCKET` for uploaded CV files.
+- `AUDIO_BUCKET` for question audio, answer audio, and transcripts.
 
-+ In **Services**, type ```s3``` in the search box and choose the service with type **gateway**
+For a small demo, both can point to the same bucket if prefixes are separated clearly.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+Recommended prefixes:
 
-+ For VPC, select **VPC Cloud** from the drop-down.
-+ For **Configure route tables**, select the route table that is already associated with **two subnets** (note: this is not the main route table for the VPC, but a second route table created by CloudFormation).
+```text
+cv/{userId}/{cvId}.{extension}
+voice/question/{userId}/{interviewId}/{questionId}.mp3
+voice/answer/{userId}/{interviewId}/{questionId}.webm
+voice/transcript/{userId}/{interviewId}/{questionId}.json
+```
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+Enable default encryption and block public access. The frontend should never upload directly to S3 unless you add a signed URL flow. In the current project, the frontend sends the base64 CV to `upload_cv`, and Lambda writes the object to S3.
 
-+ **For Policy**, leave the default option, **Full Access**, to allow full access to the service. You will deploy **a VPC endpoint policy** in a later lab module to demonstrate restricting access to **S3 buckets** based on policies.
+#### Step 3: Configure S3 CORS if direct browser access is needed
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
+If the frontend needs to fetch generated audio directly from S3, add a CORS rule similar to:
 
-+ Do not add a tag to the VPC endpoint at this time.
-+ Click **Create endpoint**, then click x after receiving a successful creation message.
+```json
+[
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["GET", "HEAD"],
+    "AllowedOrigins": ["http://localhost:5173"],
+    "ExposeHeaders": ["ETag"],
+    "MaxAgeSeconds": 3000
+  }
+]
+```
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+Add the deployed frontend origin later when production hosting is ready.
+
+#### Step 4: Create DynamoDB tables
+
+Create the tables below with on-demand capacity for easier demo usage:
+
+| Table | Partition key | Sort key |
+| --- | --- | --- |
+| `Users` | `userId` string | none |
+| `CVs` | `userId` string | `cvId` string |
+| `Interviews` | `userId` string | `interviewId` string |
+
+Important attributes:
+
+- `Users`: `email`, `fullName`, `phone`, `avatarUrl`, `role`, `createdAt`, `updatedAt`.
+- `CVs`: `cvId`, `fileName`, `fileType`, `s3Key`, `status`, `analysis`, `createdAt`, `updatedAt`.
+- `Interviews`: `interviewId`, `cvId`, `role`, `questionCount`, `questions`, `answers`, `attempts`, `score`, `feedback`, `createdAt`, `updatedAt`.
+
+#### Step 5: Save names for Lambda environment variables
+
+After creating the resources, record:
+
+- CV bucket name.
+- Audio bucket name.
+- DynamoDB table names.
+- AWS region.
+
+Use these values in the backend Lambda environment variables in the next section.

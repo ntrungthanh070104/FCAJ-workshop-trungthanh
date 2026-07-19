@@ -1,57 +1,87 @@
 ---
-title : "Prepare the environment"
+title : "Deploy Lambda Functions"
 date : 2024-01-01
 weight : 1
 chapter : false
 pre : " <b> 5.4.1 </b> "
 ---
 
-To prepare for this part of the workshop you will need to:
-+ Deploying a CloudFormation stack 
-+ Modifying a VPC route table. 
+#### Backend Lambda list
 
-These components work together to simulate on-premises DNS forwarding and name resolution.
+Deploy or update the Lambda functions from the `backend/` directory:
 
-#### Deploy the CloudFormation stack
+- `upload_cv`
+- `analyze_cv`
+- `profile_api`
+- `create_interview`
+- `submit_answer`
+- `polly_speech`
+- `transcribe_audio`
+- `history_api`
+- `admin_api`
 
-The CloudFormation template will create additional services to support an on-premises simulation:
-+ One Route 53 Private Hosted Zone that hosts Alias records for the PrivateLink S3 endpoint
-+ One Route 53 Inbound Resolver endpoint that enables "VPC Cloud" to resolve inbound DNS resolution requests to the Private Hosted Zone
-+ One Route 53 Outbound Resolver endpoint that enables "VPC On-prem" to forward DNS requests for S3 to "VPC Cloud"
+Each Lambda should have its own execution role or a carefully scoped shared role for the demo environment.
 
-![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
+#### Required environment variables
 
-1. Click the following link to open the [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). The required template will be pre-loaded into the menu. Accept all default and click Create stack.
+Configure only the variables each function needs:
 
-![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
+| Lambda | Required variables |
+| --- | --- |
+| `upload_cv` | `CV_BUCKET`, `CVS_TABLE` |
+| `analyze_cv` | `CV_BUCKET`, `CVS_TABLE`, `BEDROCK_MODEL_ID`, `BEDROCK_REGION` |
+| `profile_api` | `USERS_TABLE` |
+| `create_interview` | `CVS_TABLE`, `INTERVIEWS_TABLE`, `BEDROCK_MODEL_ID`, `BEDROCK_REGION` |
+| `submit_answer` | `INTERVIEWS_TABLE`, `BEDROCK_MODEL_ID`, `BEDROCK_REGION` |
+| `polly_speech` | `AUDIO_BUCKET` |
+| `transcribe_audio` | `AUDIO_BUCKET` |
+| `history_api` | `CVS_TABLE`, `INTERVIEWS_TABLE` |
+| `admin_api` | `USERS_TABLE`, `CVS_TABLE`, `INTERVIEWS_TABLE` |
 
-![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
+#### IAM permissions by function
 
-It may take a few minutes for stack deployment to complete. You can continue with the next step without waiting for the deployemnt to finish.
+Use least-privilege permissions:
 
-#### Update on-premise private route table
+- `upload_cv`: `s3:PutObject`, `dynamodb:PutItem`, `dynamodb:UpdateItem`.
+- `analyze_cv`: `s3:GetObject`, `dynamodb:GetItem`, `dynamodb:UpdateItem`, `bedrock:InvokeModel`.
+- `profile_api`: `dynamodb:GetItem`, `dynamodb:PutItem`, `dynamodb:UpdateItem`.
+- `create_interview`: `dynamodb:GetItem`, `dynamodb:PutItem`, `dynamodb:Query`, `bedrock:InvokeModel`.
+- `submit_answer`: `dynamodb:GetItem`, `dynamodb:UpdateItem`, `bedrock:InvokeModel`.
+- `polly_speech`: `polly:SynthesizeSpeech`, `s3:PutObject`.
+- `transcribe_audio`: `transcribe:StartTranscriptionJob`, `transcribe:GetTranscriptionJob`, `s3:GetObject`, `s3:PutObject`.
+- `history_api`: `dynamodb:Query`, `dynamodb:GetItem`.
+- `admin_api`: read access to `Users`, `CVs`, `Interviews`, plus only the update/export permissions that admin features require.
 
-This workshop uses a strongSwan VPN running on an EC2 instance to simulate connectivty between an on-premises datacenter and the AWS cloud. Most of the required components are provisioned before your start. To finalize the VPN configuration, you will modify the "VPC On-prem" routing table to direct traffic destined for the cloud to the strongSwan VPN instance.
+#### Deployment checklist
 
-1. Open the Amazon EC2 console 
+For each Lambda:
 
-2. Select the instance named infra-vpngw-test. From the Details tab, copy the Instance ID and paste this into your text editor
+1. Confirm the handler file and handler name match the AWS Lambda setting.
+2. Set the runtime to the version used by the code.
+3. Upload the function code.
+4. Attach the execution role.
+5. Add environment variables.
+6. Set timeout high enough for Bedrock and Transcribe polling paths.
+7. Open CloudWatch Logs after the first test invocation.
 
-![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
+#### Error handling expectation
 
-3. Navigate to the VPC menu by using the Search box at the top of the browser window.
+Each Lambda should return a consistent JSON shape:
 
-4. Click on Route Tables, select the RT Private On-prem route table, select the Routes tab, and click Edit Routes.
+```json
+{
+  "success": true,
+  "data": {}
+}
+```
 
-![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
+For errors:
 
-5. Click Add route.
-+ Destination: your Cloud VPC cidr range
-+ Target: ID of your infra-vpngw-test instance (you saved in your editor at step 1)
+```json
+{
+  "success": false,
+  "message": "Readable error message"
+}
+```
 
-![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
-
-6. Click Save changes
-
-
-
+This keeps frontend services easier to debug and prevents blank pages when an API fails.

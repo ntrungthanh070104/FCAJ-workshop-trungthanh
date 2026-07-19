@@ -6,32 +6,41 @@ chapter : false
 pre : " <b> 5.6. </b> "
 ---
 
-#### Dọn dẹp tài nguyên
+#### Trước khi xóa tài nguyên
 
-Xin chúc mừng bạn đã hoàn thành xong lab này!
-Trong lab này, bạn đã học về các mô hình kiến trúc để truy cập Amazon S3 mà không sử dụng Public Internet.
+Chỉ dọn dẹp lab resources khi bạn không cần môi trường demo nữa. Nếu dữ liệu thuộc user thật, hãy export hoặc backup trước.
 
-+ Bằng cách tạo Gateway endpoint, bạn đã cho phép giao tiếp trực tiếp giữa các tài nguyên EC2 và Amazon S3, mà không đi qua Internet Gateway.
-Bằng cách tạo Interface endpoint, bạn đã mở rộng kết nối S3 đến các tài nguyên chạy trên trung tâm dữ liệu trên chỗ của bạn thông qua AWS Site-to-Site VPN hoặc Direct Connect.
+#### Thứ tự dọn dẹp
 
-#### Dọn dẹp
-1. Điều hướng đến Hosted Zones trên phía trái của bảng điều khiển Route 53. Nhấp vào tên của  s3.us-east-1.amazonaws.com zone. Nhấp vào Delete và xác nhận việc xóa bằng cách nhập từ khóa "delete".
+1. Disable hoặc delete API Gateway stages và routes.
+2. Delete Lambda functions sau khi chắc chắn frontend production không còn dùng.
+3. Empty S3 buckets, sau đó delete buckets nếu chỉ dùng cho lab.
+4. Delete DynamoDB tables nếu dữ liệu không cần giữ.
+5. Delete Cognito test users, groups, app client, domain và user pool nếu đây không phải production pool.
+6. Delete CloudWatch log groups do Lambda tạo nếu không cần giữ logs.
+7. Remove SES test identities nếu không dùng ở nơi khác.
+8. Xóa local `.env` values chứa endpoint hoặc ID của môi trường đã xóa.
+9. Clear browser localStorage nếu muốn xóa dữ liệu fallback local.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+#### Nên giữ lại cho phát triển tiếp
 
-2. Disassociate Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
+Với môi trường còn phát triển tiếp, nên giữ:
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
+- Source code trong `frontend/` và `backend/`.
+- Documentation trong `2-Proposal/` và `5-Workshop/`.
+- Architecture diagrams và screenshots.
+- File `.env.example` đã được làm sạch.
+- Ghi chú tên AWS resources và region đang dùng.
 
-4.Mở console của CloudFormation và xóa hai stack CloudFormation mà bạn đã tạo cho bài thực hành này:
-+ PLOnpremSetup
-+ PLCloudSetup
+#### Kiểm tra cuối
 
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
+Sau khi cleanup, mở AWS console và kiểm tra không còn chi phí bất thường từ:
 
-5. Xóa các S3 bucket
-
-+ Mở bảng điều khiển S3
-+ Chọn bucket chúng ta đã tạo cho lab, nhấp chuột và xác nhận là empty. Nhấp Delete và xác nhận delete.
-+ 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+- Bedrock model usage.
+- Transcribe jobs.
+- Polly requests.
+- S3 storage.
+- DynamoDB tables.
+- API Gateway stages.
+- Lambda invocations.
+- CloudWatch Logs storage.

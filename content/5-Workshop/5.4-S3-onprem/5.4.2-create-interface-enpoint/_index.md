@@ -1,43 +1,65 @@
 ---
-title : "Create an S3 Interface endpoint"
+title : "Configure API Gateway and Cognito Authorizer"
 date : 2024-01-01
 weight : 2
 chapter : false
 pre : " <b> 5.4.2 </b> "
 ---
 
-In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
+#### Step 1: Create API Gateway routes
 
-1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
+Create routes that match the frontend service files:
 
-2. In Create endpoint console:
-+ Name the interface endpoint
-+ In Service category, choose **aws services** 
+| Frontend service | Route group |
+| --- | --- |
+| `cvApi.js` | `/upload-cv`, `/analyze-cv` |
+| `profileApi.js` | `/profile` |
+| `interviewApi.js` | `/interviews`, `/interviews/answer` |
+| `voiceApi.js` | `/voice/question-audio`, `/voice/transcribe` |
+| History page | `/history` |
+| Admin console | `/admin/*` |
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+Connect each route to its Lambda integration and deploy the API stage.
 
-3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
+#### Step 2: Enable CORS
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+For local development, allow:
 
-4. For VPC, select VPC Cloud from the drop-down.
-{{% notice warning %}}
-Make sure to choose "VPC Cloud" and not "VPC On-prem"
-{{% /notice %}}
-+ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
+- Origin: `http://localhost:5173`
+- Methods: `GET`, `POST`, `OPTIONS`, `DELETE` if delete routes are enabled
+- Headers: `Authorization`, `Content-Type`, `X-Requested-With`
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+Add the deployed frontend origin later. If the browser shows no red backend error but the request still fails, check the Network tab for blocked CORS preflight requests.
 
-5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
+#### Step 3: Create Cognito JWT authorizer
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+Use the Cognito User Pool as the identity provider:
 
-6. For Security group, choose SGforS3Endpoint:
+- Issuer URL: `https://cognito-idp.{region}.amazonaws.com/{userPoolId}`
+- Audience: the Cognito App Client ID
+- Identity source: `Authorization` header
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+Attach the authorizer to protected routes. Public routes should be avoided except for health checks or documentation.
 
-7. Keep the default policy - full access and click Create endpoint
+#### Step 4: Pass user identity to Lambda
 
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+Inside Lambda, read claims from the API Gateway authorizer context. The important values are:
 
-Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.
+- `sub` as the stable `userId`
+- `email`
+- `name` or `given_name`/`family_name` for full name
+- `phone_number`
+- `picture` if avatar URL is configured
+- `cognito:groups` for `user` or `admin`
+
+Use `sub` as the primary identity instead of email, because email can change.
+
+#### Step 5: Enforce admin role
+
+The frontend can hide admin pages, but backend must also enforce admin access. For admin routes:
+
+1. Read `cognito:groups` from JWT claims.
+2. Confirm the group contains `admin`.
+3. Return `403` if the user is not an admin.
+
+This protects `admin_api` even if a normal user manually calls the endpoint.

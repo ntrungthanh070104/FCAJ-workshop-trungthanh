@@ -1,58 +1,87 @@
 ---
-title : "Chuẩn bị tài nguyên"
+title : "Deploy Lambda Functions"
 date : 2024-01-01
 weight : 1
 chapter : false
 pre : " <b> 5.4.1 </b> "
 ---
 
-Để chuẩn bị cho phần này của workshop, bạn sẽ cần phải:
-+ Triển khai CloudFormation stack
-+ Sửa đổi bảng định tuyến VPC.
+#### Danh sách Lambda backend
 
-Các thành phần này hoạt động cùng nhau để mô phỏng DNS forwarding và name resolution.
+Deploy hoặc update các Lambda trong thư mục `backend/`:
 
-#### Triển khai CloudFormation stack
+- `upload_cv`
+- `analyze_cv`
+- `profile_api`
+- `create_interview`
+- `submit_answer`
+- `polly_speech`
+- `transcribe_audio`
+- `history_api`
+- `admin_api`
 
-Mẫu CloudFormation sẽ tạo các dịch vụ bổ sung để hỗ trợ mô phỏng môi trường truyền thống:
-+ Một Route 53 Private Hosted Zone lưu trữ các bản ghi Bí danh (Alias records) cho điểm cuối PrivateLink S3
-+ Một Route 53 Inbound Resolver endpoint cho phép "VPC Cloud" giải quyết các yêu cầu resolve DNS gửi đến Private Hosted Zone
-+ Một Route 53 Outbound Resolver endpoint cho phép "VPC On-prem" chuyển tiếp các yêu cầu DNS cho S3 sang "VPC Cloud"
+Mỗi Lambda nên có execution role riêng, hoặc dùng shared role được giới hạn kỹ cho môi trường demo.
 
-![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
+#### Environment variables cần thiết
 
-1. Click link sau để mở [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). Mẫu yêu cầu sẽ được tải sẵn vào menu. Chấp nhận tất cả mặc định và nhấp vào Tạo stack.
+Chỉ cấu hình biến mà từng function cần:
 
-![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
+| Lambda | Variables cần có |
+| --- | --- |
+| `upload_cv` | `CV_BUCKET`, `CVS_TABLE` |
+| `analyze_cv` | `CV_BUCKET`, `CVS_TABLE`, `BEDROCK_MODEL_ID`, `BEDROCK_REGION` |
+| `profile_api` | `USERS_TABLE` |
+| `create_interview` | `CVS_TABLE`, `INTERVIEWS_TABLE`, `BEDROCK_MODEL_ID`, `BEDROCK_REGION` |
+| `submit_answer` | `INTERVIEWS_TABLE`, `BEDROCK_MODEL_ID`, `BEDROCK_REGION` |
+| `polly_speech` | `AUDIO_BUCKET` |
+| `transcribe_audio` | `AUDIO_BUCKET` |
+| `history_api` | `CVS_TABLE`, `INTERVIEWS_TABLE` |
+| `admin_api` | `USERS_TABLE`, `CVS_TABLE`, `INTERVIEWS_TABLE` |
 
-![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
+#### IAM permissions theo function
 
-Có thể mất vài phút để triển khai stack hoàn tất. Bạn có thể tiếp tục với bước tiếp theo mà không cần đợi quá trình triển khai kết thúc.
+Dùng least privilege:
 
-####  Cập nhật bảng định tuyến private on-premise 
+- `upload_cv`: `s3:PutObject`, `dynamodb:PutItem`, `dynamodb:UpdateItem`.
+- `analyze_cv`: `s3:GetObject`, `dynamodb:GetItem`, `dynamodb:UpdateItem`, `bedrock:InvokeModel`.
+- `profile_api`: `dynamodb:GetItem`, `dynamodb:PutItem`, `dynamodb:UpdateItem`.
+- `create_interview`: `dynamodb:GetItem`, `dynamodb:PutItem`, `dynamodb:Query`, `bedrock:InvokeModel`.
+- `submit_answer`: `dynamodb:GetItem`, `dynamodb:UpdateItem`, `bedrock:InvokeModel`.
+- `polly_speech`: `polly:SynthesizeSpeech`, `s3:PutObject`.
+- `transcribe_audio`: `transcribe:StartTranscriptionJob`, `transcribe:GetTranscriptionJob`, `s3:GetObject`, `s3:PutObject`.
+- `history_api`: `dynamodb:Query`, `dynamodb:GetItem`.
+- `admin_api`: quyền đọc `Users`, `CVs`, `Interviews`, cộng thêm quyền update/export đúng với chức năng admin cần.
 
-Workshop này sử dụng StrongSwan VPN chạy trên EC2 instance để mô phỏng khả năng kết nối giữa trung tâm dữ liệu truyền thống và môi trường cloud AWS. Hầu hết các thành phần bắt buộc đều được cung cấp trước khi bạn bắt đầu. Để hoàn tất cấu hình VPN, bạn sẽ sửa đổi bảng định tuyến "VPC on-prem" để hướng lưu lượng đến cloud đi qua StrongSwan VPN instance.
+#### Checklist deploy
 
-1. Mở Amazon EC2 console 
+Với từng Lambda:
 
-2. Chọn instance tên infra-vpngw-test. Từ Details tab, copy Instance ID và paste vào text editor của bạn để sử dụng ở những bước tiếp theo
+1. Kiểm tra handler file và handler name đúng với Lambda setting.
+2. Chọn runtime đúng với code.
+3. Upload function code.
+4. Gắn execution role.
+5. Thêm environment variables.
+6. Set timeout đủ cho Bedrock và luồng Transcribe.
+7. Mở CloudWatch Logs sau lần test đầu tiên.
 
-![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
+#### Kỳ vọng xử lý lỗi
 
-3. Đi đến VPC menu bằng cách gõ "VPC" vào Search box
+Mỗi Lambda nên trả JSON thống nhất:
 
-4. Click vào Route Tables, chọn RT Private On-prem route table, chọn Routes tab, và click Edit Routes.
+```json
+{
+  "success": true,
+  "data": {}
+}
+```
 
-![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
+Khi lỗi:
 
-5. Click Add route.
-+ Destination: CIDR block của Cloud VPC
-+ Target: ID của infra-vpngw-test instance (bạn đã lưu lại ở bước trên)
+```json
+{
+  "success": false,
+  "message": "Readable error message"
+}
+```
 
-![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
-
-6. Click Save changes
-
-
-
-
+Cách này giúp frontend service dễ debug hơn và tránh lỗi trắng màn hình khi API trả lỗi.

@@ -1,20 +1,33 @@
 ---
-title : "Access S3 from on-premises"
+title : "Backend APIs: Lambda and API Gateway"
 date : 2024-01-01
 weight : 4
 chapter : false
 pre : " <b> 5.4. </b> "
 ---
 
-#### Overview
+#### Backend overview
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+The backend is located in `backend/` and is organized as one Lambda folder per feature. API Gateway exposes the Lambda functions to the React frontend.
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
+#### API routes
 
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
+| Route | Method | Lambda | Purpose |
+| --- | --- | --- | --- |
+| `/upload-cv` | `POST` | `upload_cv` | Upload CV base64 to S3 and save metadata |
+| `/analyze-cv` | `POST` | `analyze_cv` | Read CV from S3, analyze it, update `CVs` |
+| `/profile` | `GET` | `profile_api` | Read user profile |
+| `/profile` | `POST` | `profile_api` | Update full name, phone, avatar, and profile fields |
+| `/interviews` | `POST` | `create_interview` | Generate role-based interview questions |
+| `/interviews/answer` | `POST` | `submit_answer` | Score an answer and update interview attempts |
+| `/voice/question-audio` | `POST` | `polly_speech` | Generate question audio |
+| `/voice/transcribe` | `POST` | `transcribe_audio` | Transcribe voice answer to text |
+| `/history` | `GET` | `history_api` | Read interview history from DynamoDB |
+| `/admin/*` | varies | `admin_api` | Admin console operations |
 
+#### In this section
 
-
+1. [Deploy Lambda functions and environment variables](5.4.1-prepare/)
+2. [Configure API Gateway and Cognito authorizer](5.4.2-create-interface-enpoint/)
+3. [Test API endpoints](5.4.3-test-endpoint/)
+4. [Connect frontend and Cognito Hosted UI](5.4.4-dns-simulation/)

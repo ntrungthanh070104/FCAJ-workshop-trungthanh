@@ -1,59 +1,110 @@
 ---
-title : "Test the Interface Endpoint"
+title : "Test API Endpoints"
 date : 2024-01-01
 weight : 3
 chapter : false
 pre : " <b> 5.4.3 </b> "
 ---
 
-#### Get the regional DNS name of S3 interface endpoint
-1. From the Amazon VPC menu, choose Endpoints.
+#### Test order
 
-2. Click the name of newly created endpoint: s3-interface-endpoint. Click details and save the regional DNS name of the endpoint (the first one) to your text-editor for later use. 
+Test the APIs in the same order as the user journey. This makes it easier to find the exact broken dependency.
 
-![dns name](/images/5-Workshop/5.4-S3-onprem/dns.png)
+#### 1. Authentication
 
+- Sign in through Cognito Hosted UI.
+- Confirm the frontend receives tokens after redirect.
+- Confirm the request header contains `Authorization: Bearer <token>`.
+- Decode the ID token and verify `sub`, `email`, and `cognito:groups`.
 
-#### Connect to EC2 instance in "VPC On-prem"
+#### 2. Profile API
 
-1. Navigate to **Session manager** by typing "session manager" in the search box 
+Test:
 
-2. Click **Start Session**, and select the EC2 instance named **Test-Interface-Endpoint**. This EC2 instance is running in "VPC On-prem" and will be used to test connectivty to Amazon S3 through the Interface endpoint we just created. Session Manager will open a new browser tab with a shell prompt: **sh-4.2 $**
+- `GET /profile`
+- `POST /profile`
 
-![Start session](/images/5-Workshop/5.4-S3-onprem/start-session.png)
+Expected result:
 
-3. Change to the ssm-user's home directory with command "cd ~"
+- The user profile is stored in `Users`.
+- Full name, email, phone, and avatar fields can be shown beside the user avatar in the app.
 
-4. Create a file named testfile2.xyz
-```
-fallocate -l 1G testfile2.xyz
-```
+#### 3. CV APIs
 
-![user](/images/5-Workshop/5.4-S3-onprem/cli1.png)
+Test:
 
+- `POST /upload-cv`
+- `POST /analyze-cv`
 
-5. Copy file to the same S3 bucket we created in section 3.2
+Expected result:
 
-```
-aws s3 cp --endpoint-url https://bucket.<Regional-DNS-Name> testfile2.xyz s3://<your-bucket-name>
-``` 
-+ This command requires the --endpoint-url parameter, because you need to use the endpoint-specific DNS name to access S3 using an Interface endpoint.
-+ Do not include the leading ' * ' when copying/pasting the regional DNS name.
-+ Provide your S3 bucket name created earlier
+- S3 contains the uploaded CV object.
+- `CVs` contains one item per CV.
+- Uploading two CVs creates two `cvId` values instead of replacing the old record.
+- CV analysis updates the correct selected CV.
 
-![copy file](/images/5-Workshop/5.4-S3-onprem/cli2.png)
+#### 4. Interview APIs
 
+Test:
 
-Now the file has been added to your S3 bucket. Let check your S3 bucket in the next step.
+- `POST /interviews`
+- `POST /interviews/answer`
 
-#### Check Object in S3 bucket
+Expected result:
 
-1. Navigate to S3 console
-2. Click Buckets
-3. Click the name of your bucket and you will see testfile2.xyz has been added to your bucket
+- Generated questions match the selected role.
+- Question count matches the value selected in AI Interview or Settings.
+- Answers are saved as attempts.
+- Final score is calculated after the interview is completed.
 
-![check bucket](/images/5-Workshop/5.4-S3-onprem/check-bucket.png)
+#### 5. Voice APIs
 
+Test:
 
+- `POST /voice/question-audio`
+- `POST /voice/transcribe`
 
+Expected result:
 
+- English uses an English Polly/Transcribe language configuration.
+- Vietnamese uses a Vietnamese-compatible voice/transcription language code or a browser speech fallback if AWS voice quality is not acceptable.
+- Generated audio and transcript files are stored under the voice prefixes.
+
+#### 6. History and result
+
+Test:
+
+- `GET /history`
+- History detail view
+- Result page after finishing interview
+
+Expected result:
+
+- The history list shows completed interviews.
+- Detail view shows role, score, questions, answers, feedback, and advice.
+- The result page does not show `NaN`, empty score, or stale localStorage data.
+
+#### 7. Admin console
+
+Sign in with a user in the `admin` group and test:
+
+- Users list
+- CV list
+- Interviews list
+- Review queue
+- Audit log
+- CSV export
+- Feedback email workflow
+
+Then sign in as a normal user and confirm admin routes return `403`.
+
+#### Common errors
+
+| Symptom | Likely cause |
+| --- | --- |
+| `401 Unauthorized` | Missing/expired token or wrong authorizer audience |
+| `403 Forbidden` | User is not in the required Cognito group |
+| Browser request blocked | CORS origin/header/method mismatch |
+| Lambda `500` | Missing environment variable or IAM permission |
+| Bedrock error | Model access not enabled or wrong region |
+| Transcribe error | Audio format, S3 permission, or language code mismatch |

@@ -1,43 +1,65 @@
 ---
-title : "Tạo một S3 Interface endpoint"
+title : "Cấu hình API Gateway và Cognito Authorizer"
 date : 2024-01-01
 weight : 2
 chapter : false
 pre : " <b> 5.4.2 </b> "
 ---
 
-Trong phần này, bạn sẽ tạo và kiểm tra Interface Endpoint  S3 bằng cách sử dụng môi trường truyền thống mô phỏng.
+#### Bước 1: Tạo API Gateway routes
 
-1. Quay lại Amazon VPC menu. Trong thanh điều hướng bên trái, chọn Endpoints, sau đó click Create Endpoint.
+Tạo routes khớp với các frontend service files:
 
-2. Trong Create endpoint console:
-+ Đặt tên interface endpoint
-+ Trong Service category, chọn **aws services** 
+| Frontend service | Route group |
+| --- | --- |
+| `cvApi.js` | `/upload-cv`, `/analyze-cv` |
+| `profileApi.js` | `/profile` |
+| `interviewApi.js` | `/interviews`, `/interviews/answer` |
+| `voiceApi.js` | `/voice/question-audio`, `/voice/transcribe` |
+| History page | `/history` |
+| Admin console | `/admin/*` |
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+Kết nối từng route với Lambda integration tương ứng và deploy API stage.
 
-3.  Trong Search box, gõ S3 và nhấn Enter. Chọn endpoint có tên com.amazonaws.us-east-1.s3. Đảm bảo rằng cột Type có giá trị Interface.
+#### Bước 2: Bật CORS
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+Với local development, cho phép:
 
-4. Đối với VPC, chọn VPC Cloud từ drop-down.
-{{% notice warning %}}
-Đảm bảo rằng bạn chọn "VPC Cloud" và không phải "VPC On-prem"
-{{% /notice %}}
-+ Mở rộng **Additional settings** và đảm bảo rằng Enable DNS name *không* được chọn (sẽ sử dụng điều này trong phần tiếp theo của workshop)
+- Origin: `http://localhost:5173`
+- Methods: `GET`, `POST`, `OPTIONS`, `DELETE` nếu đã bật route xóa
+- Headers: `Authorization`, `Content-Type`, `X-Requested-With`
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+Khi deploy frontend thật, thêm production origin sau. Nếu browser không hiện lỗi đỏ rõ ràng nhưng request vẫn không chạy, kiểm tra Network tab để xem preflight CORS có bị block không.
 
-5. Chọn 2 subnets trong AZs sau: us-east-1a and us-east-1b
+#### Bước 3: Tạo Cognito JWT authorizer
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+Dùng Cognito User Pool làm identity provider:
 
-6. Đối với Security group, chọn SGforS3Endpoint:
+- Issuer URL: `https://cognito-idp.{region}.amazonaws.com/{userPoolId}`
+- Audience: Cognito App Client ID
+- Identity source: `Authorization` header
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+Gắn authorizer vào các protected routes. Public route chỉ nên dùng cho health check hoặc documentation.
 
-7. Giữ default policy - full access và click Create endpoint
+#### Bước 4: Truyền user identity vào Lambda
 
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+Trong Lambda, đọc claims từ API Gateway authorizer context. Các giá trị quan trọng:
 
-Chúc mừng bạn đã tạo thành công S3 interface endpoint. Ở bước tiếp theo, chúng ta sẽ kiểm tra interface endpoint.
+- `sub` làm `userId` ổn định.
+- `email`.
+- `name` hoặc `given_name`/`family_name` cho fullname.
+- `phone_number`.
+- `picture` nếu có cấu hình avatar URL.
+- `cognito:groups` để biết `user` hoặc `admin`.
+
+Nên dùng `sub` làm định danh chính thay vì email, vì email có thể thay đổi.
+
+#### Bước 5: Enforce admin role
+
+Frontend có thể ẩn admin page, nhưng backend vẫn phải kiểm tra quyền admin. Với admin routes:
+
+1. Đọc `cognito:groups` từ JWT claims.
+2. Kiểm tra group có `admin`.
+3. Trả `403` nếu user không phải admin.
+
+Cách này bảo vệ `admin_api` kể cả khi user thường tự gọi endpoint.

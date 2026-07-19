@@ -1,95 +1,73 @@
 ---
-title : "Test the Gateway Endpoint"
-date : 2024-01-01 
+title : "Test CV Upload, Analysis, and History Data"
+date : 2024-01-01
 weight : 2
 chapter : false
 pre : " <b> 5.3.2 </b> "
 ---
 
-#### Create S3 bucket
+#### Test goal
 
-1. Navigate to **S3 management console**
-2. In the Bucket console, choose **Create bucket**
+This test confirms that multiple CVs can exist for the same user without overwriting each other, and that the dashboard, upload page, and history page can read the correct selected CV/interview data.
 
-![Create bucket](/images/5-Workshop/5.3-S3-vpc/create-bucket.png)
+#### Step 1: Upload more than one CV
 
-3. In **the Create bucket console**
-+ **Name the bucket**: choose a name that hasn't been given to any bucket globally (hint: lab number and your name)
+From the frontend:
 
-![Bucket name](/images/5-Workshop/5.3-S3-vpc/bucket-name.png)
+1. Sign in as a normal user.
+2. Open **Upload CV**.
+3. Upload the first CV and wait until metadata is saved.
+4. Upload a second CV.
+5. Confirm both CVs appear in the Upload CV list and Dashboard CV status section.
 
-+ Leave other fields as they are (default)
-+ Scroll down and choose **Create bucket**
+Expected result:
 
-![Create](/images/5-Workshop/5.3-S3-vpc/create-button.png) 
+- Each uploaded CV has a unique `cvId`.
+- Each S3 object uses a unique key such as `cv/{userId}/{cvId}.pdf`.
+- The newest CV should not delete or overwrite the old CV.
 
-+ Successfully create S3 bucket.
+#### Step 2: Verify DynamoDB records
 
-![Success](/images/5-Workshop/5.3-S3-vpc/bucket-success.png)
+In DynamoDB, open the `CVs` table and query by the test `userId`. You should see multiple records under the same partition key with different `cvId` sort keys.
 
-#### Connect to EC2 with session manager
+Recommended fields to inspect:
 
-+ For this workshop, you will use **AWS Session Manager** to access several **EC2 instances**. **Session Manager** is a fully managed **AWS Systems Manager** capability that allows you to manage your **Amazon EC2 instances**  and on-premises virtual machines (VMs) through an interactive one-click browser-based shell. Session Manager provides secure and auditable instance management without the need to open inbound ports, maintain bastion hosts, or manage SSH keys.
+- `fileName`
+- `s3Key`
+- `status`
+- `analysis`
+- `createdAt`
+- `updatedAt`
 
-+ First Cloud AI Journey [Lab](https://000058.awsstudygroup.com/1-introduce/) for indepth understanding of Session manager.
+#### Step 3: Analyze each CV
 
-1. In the **AWS Management Console**, start typing ```Systems Manager``` in the quick search box and press **Enter**:
+Select each CV from the frontend and run analysis. Confirm that:
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm.png)
+- Analysis updates the selected CV only.
+- Dashboard detail changes when another CV is selected.
+- Role hints and extracted skills match the selected CV.
 
-2. From the **Systems Manager** menu, find **Node Management** in the left menu and click **Session Manager**:
+#### Step 4: Create an interview from the selected CV
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm1.png)
+Open **AI Interview**:
 
-3. Click **Start Session**, and select **the EC2 instance** named **Test-Gateway-Endpoint**. 
-{{% notice info %}}
-This EC2 instance is already running in "VPC Cloud" and will be used to test connectivity to Amazon S3 through the Gateway endpoint you just created (s3-gwe). {{% /notice %}}
+1. Select the CV-based role or choose another AI role.
+2. Set question count, default 5 and minimum 2.
+3. Generate questions.
+4. Submit at least one answer.
+5. Finish the interview and open the Result page.
 
-![Start session](/images/5-Workshop/5.3-S3-vpc/start-session.png)
+Expected result:
 
-**Session Manager** will open a new browser tab with a shell prompt: sh-4.2 $
+- `Interviews` contains an item with `cvId`, `role`, `questionCount`, questions, attempts, and score.
+- The displayed progress uses the selected question count, for example `0/5` or `0/3`.
 
-![Success](/images/5-Workshop/5.3-S3-vpc/start-session-success.png)
+#### Step 5: Verify history
 
-You have successfully start a session - connect to the EC2 instance in VPC cloud. In the next step, we will create a S3 bucket and a file in it. 
+Open **History** and check:
 
-#### Create a file and upload to s3 bucket
+- Interview list loads from DynamoDB when the history API is enabled.
+- Detail button opens the selected interview.
+- Detail view shows role, score, questions, answers, feedback, and advice.
 
-1. Change to the ssm-user's home directory by typing ```cd ~``` in the CLI
-
-![Change user's dir](/images/5-Workshop/5.3-S3-vpc/cli1.png)
-
-2. Create a new file to use for testing with the command ```fallocate -l 1G testfile.xyz```, which will create a file of 1GB size named "testfile.xyz".
-
-![Create file](/images/5-Workshop/5.3-S3-vpc/cli-file.png)
-
-3. Upload file to S3 bucket with command ```aws s3 cp testfile.xyz s3://your-bucket-name```. Replace your-bucket-name with the name of S3 bucket that you created earlier.
-
-![Uploaded](/images/5-Workshop/5.3-S3-vpc/uploaded.png)
-
-You have successfully uploaded the file to your S3 bucket. You can now terminate the session.
-
-#### Check object in S3 bucket
-
-1. Navigate to S3 console.  
-2. Click the name of your s3 bucket
-3. In the Bucket console, you will see the file you have uploaded to your S3 bucket
-
-![Check S3](/images/5-Workshop/5.3-S3-vpc/check-s3-bucket.png)
-
-#### Section summary
-
-Congratulation on completing access to S3 from VPC. In this section, you created a Gateway endpoint for Amazon S3, and used the AWS CLI to upload an object. The upload worked because the Gateway endpoint allowed communication to S3, without needing an Internet Gateway attached to "VPC Cloud". This demonstrates the functionality of the Gateway endpoint as a secure path to S3 without traversing the Public Internet.
-
-
-
-
-
-
-
-
-
-
-
-
-
+If the app falls back to localStorage, make sure the UI clearly keeps the same behavior while the DynamoDB flow is being completed.

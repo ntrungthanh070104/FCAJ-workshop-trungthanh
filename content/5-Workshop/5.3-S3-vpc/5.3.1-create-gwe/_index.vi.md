@@ -1,40 +1,76 @@
 ---
-title : "Tạo một Gateway Endpoint"
-date : 2024-01-01 
+title : "Tạo S3 Buckets và DynamoDB Tables"
+date : 2024-01-01
 weight : 1
 chapter : false
 pre : " <b> 5.3.1 </b> "
 ---
 
-1. Mở [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. Trong thanh điều hướng, chọn **Endpoints**, click **Create Endpoint**:
+#### Bước 1: Chọn AWS Region
 
-{{% notice note %}}
-Bạn sẽ thấy 6 điểm cuối VPC hiện có hỗ trợ AWS Systems Manager (SSM). Các điểm cuối này được Mẫu CloudFormation triển khai tự động cho workshop này.
-{{% /notice %}}
+Nên dùng một region chính cho lần triển khai đầu tiên. Giữ Lambda, API Gateway, S3, DynamoDB, Cognito, Polly, Transcribe và Bedrock cùng cấu hình region nếu có thể. Nếu Bedrock model chỉ chạy ở region khác, đặt riêng biến `BEDROCK_REGION` cho các Lambda gọi Bedrock.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+#### Bước 2: Tạo S3 storage
 
-3. Trong Create endpoint console:
-+ Đặt tên cho endpoint: s3-gwe
-+ Trong service category, chọn **aws services**
+Tạo một hoặc hai S3 bucket:
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+- `CV_BUCKET` để lưu CV upload.
+- `AUDIO_BUCKET` để lưu audio câu hỏi, audio câu trả lời và transcript.
 
-+ Trong **Services**, gõ "s3" trong hộp tìm kiếm và chọn dịch vụ với loại **gateway**
+Với demo nhỏ, hai biến này có thể trỏ cùng một bucket nếu prefix được tách rõ.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+Prefix khuyến nghị:
 
-+ Đối với VPC, chọn **VPC Cloud** từ drop-down menu.
-+ Đối với Route tables, chọn bảng định tuyến mà đã liên kết với 2 subnets (lưu ý: đây không phải là bảng định tuyến chính cho VPC mà là bảng định tuyến thứ hai do CloudFormation tạo).
+```text
+cv/{userId}/{cvId}.{extension}
+voice/question/{userId}/{interviewId}/{questionId}.mp3
+voice/answer/{userId}/{interviewId}/{questionId}.webm
+voice/transcript/{userId}/{interviewId}/{questionId}.json
+```
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+Bật default encryption và block public access. Frontend không nên upload trực tiếp lên S3 nếu chưa có signed URL flow. Trong dự án hiện tại, frontend gửi CV base64 đến `upload_cv`, sau đó Lambda ghi object vào S3.
 
-+ Đối với Policy, để tùy chọn mặc định là Full access để cho phép toàn quyền truy cập vào dịch vụ. Bạn sẽ triển khai VPC endpoint policy trong phần sau để chứng minh việc hạn chế quyền truy cập vào S3 bucket dựa trên các policies.
+#### Bước 3: Cấu hình S3 CORS nếu cần browser truy cập trực tiếp
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
+Nếu frontend cần lấy generated audio trực tiếp từ S3, thêm CORS rule tương tự:
 
-+ Không thêm tag vào VPC endpoint.
-+ Click Create endpoint, click x sau khi nhận được thông báo tạo thành công.
+```json
+[
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["GET", "HEAD"],
+    "AllowedOrigins": ["http://localhost:5173"],
+    "ExposeHeaders": ["ETag"],
+    "MaxAgeSeconds": 3000
+  }
+]
+```
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+Khi có frontend production URL, thêm origin production vào rule.
+
+#### Bước 4: Tạo DynamoDB tables
+
+Tạo các bảng dưới đây với on-demand capacity để dễ dùng cho demo:
+
+| Table | Partition key | Sort key |
+| --- | --- | --- |
+| `Users` | `userId` string | không có |
+| `CVs` | `userId` string | `cvId` string |
+| `Interviews` | `userId` string | `interviewId` string |
+
+Các attributes quan trọng:
+
+- `Users`: `email`, `fullName`, `phone`, `avatarUrl`, `role`, `createdAt`, `updatedAt`.
+- `CVs`: `cvId`, `fileName`, `fileType`, `s3Key`, `status`, `analysis`, `createdAt`, `updatedAt`.
+- `Interviews`: `interviewId`, `cvId`, `role`, `questionCount`, `questions`, `answers`, `attempts`, `score`, `feedback`, `createdAt`, `updatedAt`.
+
+#### Bước 5: Lưu lại tên resource cho Lambda environment variables
+
+Sau khi tạo xong, ghi lại:
+
+- Tên CV bucket.
+- Tên audio bucket.
+- Tên DynamoDB tables.
+- AWS region.
+
+Các giá trị này sẽ được dùng cho environment variables của Lambda ở phần tiếp theo.

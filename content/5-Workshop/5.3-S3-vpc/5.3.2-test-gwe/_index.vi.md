@@ -1,82 +1,73 @@
 ---
-title : "Kiểm tra Gateway Endpoint"
-date : 2024-01-01 
+title : "Test Upload CV, Phân tích và History Data"
+date : 2024-01-01
 weight : 2
 chapter : false
 pre : " <b> 5.3.2 </b> "
 ---
 
-#### Tạo S3 bucket
+#### Mục tiêu test
 
-1. Đi đến S3 management console
-2. Trong Bucket console, chọn **Create bucket**
+Bài test này kiểm tra việc một user có thể có nhiều CV mà không bị ghi đè, đồng thời dashboard, upload page và history page đọc đúng dữ liệu của CV/interview đang được chọn.
 
-![Create bucket](/images/5-Workshop/5.3-S3-vpc/create-bucket.png)
+#### Bước 1: Upload nhiều hơn một CV
 
-3. Trong Create bucket console
-+ Đặt tên bucket: chọn 1 tên mà không bị trùng trong phạm vi toàn cầu (gợi ý: lab\<số-lab\>\<tên-bạn\>)
+Từ frontend:
 
-![Bucket name](/images/5-Workshop/5.3-S3-vpc/bucket-name.png)
+1. Đăng nhập bằng user thường.
+2. Mở **Upload CV**.
+3. Upload CV thứ nhất và chờ metadata được lưu.
+4. Upload CV thứ hai.
+5. Kiểm tra cả hai CV đều xuất hiện trong Upload CV list và Dashboard CV status.
 
+Kết quả mong đợi:
 
-+ Giữ nguyên giá trị của các fields khác (default)
-+ Kéo chuột xuống và chọn **Create bucket**
+- Mỗi CV có `cvId` riêng.
+- Mỗi S3 object có key riêng như `cv/{userId}/{cvId}.pdf`.
+- CV mới không xóa hoặc ghi đè CV cũ.
 
-![Create](/images/5-Workshop/5.3-S3-vpc/create-button.png)    
+#### Bước 2: Kiểm tra DynamoDB records
 
-+ Tạo thành công S3 bucket
+Trong DynamoDB, mở bảng `CVs` và query theo `userId` đang test. Bạn cần thấy nhiều record cùng partition key nhưng khác `cvId` sort key.
 
-![Success](/images/5-Workshop/5.3-S3-vpc/bucket-success.png)
+Các fields nên kiểm tra:
 
-#### Kết nối với EC2 bằng session manager
+- `fileName`
+- `s3Key`
+- `status`
+- `analysis`
+- `createdAt`
+- `updatedAt`
 
-+ Trong workshop này, bạn sẽ dùng AWS Session Manager để kết nối đến các EC2 instances. Session Manager là 1 tính năng trong dịch vụ Systems Manager được quản lý hoàn toàn bởi AWS. System manager cho phép bạn quản lý Amazon EC2 instances và các máy ảo on-premises (VMs)thông qua 1 browser-based shell. Session Manager cung cấp khả năng quản lý phiên bản an toàn và có thể kiểm tra mà không cần mở cổng vào, duy trì máy chủ bastion host hoặc quản lý khóa SSH.
+#### Bước 3: Phân tích từng CV
 
-+ First Cloud AI Journey [Lab](https://000058.awsstudygroup.com/1-introduce/) để hiểu sâu hơn về Session manager.
+Chọn từng CV trên frontend và chạy analysis. Kiểm tra:
 
-1. Trong AWS Management Console, gõ Systems Manager trong ô tìm kiếm và nhấn Enter:
+- Analysis chỉ cập nhật CV đang chọn.
+- Dashboard detail thay đổi khi chọn CV khác.
+- Role hints và extracted skills đúng với CV đang chọn.
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm.png)
+#### Bước 4: Tạo interview từ CV đang chọn
 
-2. Từ **Systems Manager** menu, tìm **Node Management** ở thanh bên trái và chọn **Session Manager**:
+Mở **AI Interview**:
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm1.png)
+1. Chọn role theo CV hoặc chọn role AI khác.
+2. Chọn số câu hỏi, mặc định 5 và tối thiểu 2.
+3. Generate questions.
+4. Submit ít nhất một câu trả lời.
+5. Finish interview và mở Result page.
 
-3. Click Start Session, và chọn EC2 instance tên **Test-Gateway-Endpoint**. 
-{{% notice info %}}
-Phiên bản EC2 này đã chạy trong "VPC cloud" và sẽ được dùng để kiểm tra khả năng kết nối với Amazon S3 thông qua điểm cuối Cổng mà bạn vừa tạo (s3-gwe). {{% /notice %}}
+Kết quả mong đợi:
 
-![Start session](/images/5-Workshop/5.3-S3-vpc/start-session.png)
+- `Interviews` có item gồm `cvId`, `role`, `questionCount`, questions, attempts và score.
+- Progress hiển thị đúng số câu đã chọn, ví dụ `0/5` hoặc `0/3`.
 
-Session Manager sẽ mở browser tab mới với shell prompt: sh-4.2 $
+#### Bước 5: Kiểm tra history
 
-![Success](/images/5-Workshop/5.3-S3-vpc/start-session-success.png)
+Mở **History** và kiểm tra:
 
-Bạn đã bắt đầu phiên kết nối đến EC2 trong VPC Cloud thành công. Trong bước tiếp theo, chúng ta sẽ tạo một  S3 bucket và một tệp trong đó.
-#### Create a file and upload to s3 bucket
+- Interview list đọc từ DynamoDB khi history API đã bật.
+- Nút detail mở đúng interview đã chọn.
+- Detail view hiển thị role, score, questions, answers, feedback và advice.
 
-1. Đổi về ssm-user's thư mục bằng lệnh "cd ~" 
-
-![Change user's dir](/images/5-Workshop/5.3-S3-vpc/cli1.png)
-
-2. Tạo 1 file để kiểm tra bằng lệnh "fallocate -l 1G testfile.xyz", 1 file tên "testfile.xyz" có kích thước 1GB sẽ được tạo.
-
-![Create file](/images/5-Workshop/5.3-S3-vpc/cli-file.png)
-
-3. Tải file mình vừa tạo lên S3 với lệnh "aws s3 cp testfile.xyz s3://your-bucket-name". Thay your-bucket-name bằng tên S3 bạn đã tạo.
-
-![Uploaded](/images/5-Workshop/5.3-S3-vpc/uploaded.png)
-
-Bạn đã tải thành công tệp lên bộ chứa S3 của mình. Bây giờ bạn có thể kết thúc session.
-
-#### Kiểm tra object trong S3 bucket
-
-1. Đi đến S3 console.  
-2. Click tên s3 bucket của bạn
-3. Trong Bucket console, bạn sẽ thấy tệp bạn đã tải lên S3 bucket của mình
-
-![Check S3](/images/5-Workshop/5.3-S3-vpc/check-s3-bucket.png)
-
-#### Tóm tắt
-
-Chúc mừng bạn đã hoàn thành truy cập S3 từ VPC. Trong phần này, bạn đã tạo gateway endpoint cho Amazon S3 và sử dụng AWS CLI để tải file lên. Quá trình tải lên hoạt động vì gateway endpoint cho phép giao tiếp với S3 mà không cần Internet gateway gắn vào "VPC Cloud". Điều này thể hiện chức năng của gateway endpoint như một đường dẫn an toàn đến S3 mà không cần đi qua pub    lic Internet.
+Nếu app đang fallback qua localStorage, UI vẫn nên giữ cùng hành vi trong lúc hoàn thiện DynamoDB history flow.
