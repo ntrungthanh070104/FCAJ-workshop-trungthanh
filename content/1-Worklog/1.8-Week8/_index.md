@@ -8,20 +8,23 @@ pre: " <b> 1.8. </b> "
 
 ### Week 8 Objectives:
 
-* Deploy Cognito authentication and CV upload feature.
-* Connect API Gateway with Lambda and DynamoDB.
+* Continue container, monitoring, database, and security practice.
+* Strengthen scalable and observable architecture design skills.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | ------------ | --------------- | -------------- |
-| 1 | - Configure Cognito Hosted UI, App Client, user/admin groups | 19/06/2026 | 19/06/2026 | AWS Cognito Documentation |
-| 2 | - Write Lambda upload_cv: validate file, upload S3, save DynamoDB metadata | 20/06/2026 | 21/06/2026 | AWS Lambda Documentation |
-| 3 | - Create API Gateway route POST /upload_cv | 22/06/2026 | 23/06/2026 | AWS API Gateway Documentation |
-| 4 | - Test basic login/logout | 24/06/2026 | 25/06/2026 | FCAJ Workshop / Vertex IntervAI |
-| 5 | - Review basic security for CV files | 27/06/2026 | 27/06/2026 | AWS S3 Documentation |
+| 1 | - Learn and practice Amazon ECS: create Cluster, Task Definition, Service, and run containers on Fargate | 08/06/2026 | 08/06/2026 | AWS ECS Documentation |
+| 2 | - Learn Application Load Balancer (ALB) and Auto Scaling Group: configure load balancing and automatic scaling | 09/06/2026 | 09/06/2026 | AWS Elastic Load Balancing Documentation |
+| 3 | - Study Amazon RDS in depth: deploy MySQL/PostgreSQL, Multi-AZ, Read Replica, Backup, and Restore | 10/06/2026 | 10/06/2026 | AWS RDS Documentation |
+| 4 | - Practice Amazon CloudWatch: Metrics, Alarms, Logs Insights, and Dashboard | 11/06/2026 | 11/06/2026 | AWS CloudWatch Documentation |
+| 5 | - Explore security services: AWS WAF, AWS Shield, and advanced IAM (Condition, Permission Boundary) | 12/06/2026 | 12/06/2026 | AWS IAM Documentation |
+| 6 | - Complete integrated labs across ECS + ALB + RDS + CloudWatch | 13/06/2026 | 13/06/2026 | AWS CloudWatch Documentation |
+| 7 | - Read AWS Well-Architected Framework documentation and practice on AWS Skill Builder / AWS Console | 14/06/2026 | 14/06/2026 | AWS Documentation |
 
 ### Week 8 Achievements:
 
-* Completed authentication with Cognito.
-* Successfully deployed CV upload feature.
-* Basic security for CV files in place.
+* Mastered five more important AWS services, especially Container and Monitoring.
+* Gained the ability to deploy a basic containerized application with load balancing and monitoring.
+* Accumulated more than 21 hours of hands-on practice during the week.
+* Understood scalable, reliable, and observable system design more clearly.

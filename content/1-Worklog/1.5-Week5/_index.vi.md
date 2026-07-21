@@ -8,20 +8,20 @@ pre: " <b> 1.5. </b> "
 
 ### Mục tiêu tuần 5:
 
-* Củng cố hiểu biết về IAM và các nguyên tắc bảo mật trên AWS.
-* Thực hành các dịch vụ AWS cốt lõi như S3, EC2, VPC và giám sát.
+* Thực hành các dịch vụ AWS cốt lõi về định danh, lưu trữ, compute và networking.
+* Củng cố nền tảng để tự xây dựng môi trường cloud cơ bản.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | ------------ | --------------- | -------------- |
-| 1 | - Tìm hiểu IAM: User, Group, Role, Policy <br> - Áp dụng least privilege và cấu hình MFA | 23/05/2026 | 23/05/2026 | AWS IAM Documentation |
-| 2 | - Tạo và cấu hình bucket Amazon S3 <br> - Bật Versioning, Static Website Hosting, Bucket Policy và Lifecycle Rules | 24/05/2026 | 25/05/2026 | AWS S3 Documentation |
-| 3 | - Khởi tạo instance EC2 Linux và Windows <br> - Cấu hình Security Group, Key Pair, Elastic IP và User Data | 26/05/2026 | 27/05/2026 | AWS EC2 Documentation |
-| 4 | - Học nền tảng mạng VPC <br> - Tạo Public/Private Subnet, Internet Gateway, Route Table và NAT Gateway | 28/05/2026 | 29/05/2026 | AWS VPC Documentation |
-| 5 | - Khám phá RDS, DynamoDB và CloudWatch <br> - Ôn Shared Responsibility Model và các khái niệm AWS cốt lõi | 31/05/2026 | 31/05/2026 | AWS Documentation |
+| 1 | - Tìm hiểu và thực hành IAM: quản lý User, Group, Role, Policy tùy chỉnh và thiết lập MFA. | 18/05/2026 | 18/05/2026 | AWS IAM Documentation |
+| 2 | - Thực hành chuyên sâu Amazon S3: tạo bucket, bật Versioning, hosting static website, cấu hình Bucket Policy và Lifecycle rules. | 19/05/2026 | 20/05/2026 | AWS S3 Documentation |
+| 3 | - Triển khai và quản lý Amazon EC2: launch instance Linux & Windows, cấu hình Security Group, Key Pair, Elastic IP và User Data. | 21/05/2026 | 21/05/2026 | AWS EC2 Documentation |
+| 4 | - Học VPC Networking cơ bản: thiết kế Public/Private Subnet, Internet Gateway, Route Table và NAT Gateway. | 22/05/2026 | 23/05/2026 | AWS Networking Documentation |
+| 5 | - Khám phá sơ bộ các dịch vụ RDS, DynamoDB và CloudWatch. | 24/05/2026 | 24/05/2026 | AWS DynamoDB Documentation |
 
 ### Kết quả đạt được tuần 5:
 
 * Đã làm quen và sử dụng thành thạo 6 dịch vụ AWS quan trọng nhất.
-* Có khả năng tự xây dựng môi trường cloud cơ bản hoàn chỉnh (VPC + EC2 + S3).
-* Hiểu rõ hơn về Shared Responsibility Model và các khái niệm cốt lõi của AWS.
+* Có khả năng tự xây dựng một môi trường cloud cơ bản hoàn chỉnh (VPC + EC2 + S3).
+* Hiểu rõ hơn về mô hình trách nhiệm chung (Shared Responsibility Model) và các khái niệm cốt lõi của AWS.

@@ -8,20 +8,20 @@ pre: " <b> 1.9. </b> "
 
 ### Week 9 Objectives:
 
-* Protect API with JWT Authorizer and Cognito token.
-* Deploy Lambda analyze_cv and monitor via CloudWatch.
+* Study advanced AWS networking, security, and cost optimization.
+* Consolidate AWS knowledge before project implementation.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | ------------ | --------------- | -------------- |
-| 1 | - Create JWT Authorizer for API Gateway | 28/06/2026 | 28/06/2026 | AWS API Gateway Documentation |
-| 2 | - Protect routes with Cognito token, debug CORS | 29/06/2026 | 30/06/2026 | AWS Cognito Documentation |
-| 3 | - Write Lambda analyze_cv, configure IAM for S3/DynamoDB | 01/07/2026 | 02/07/2026 | AWS Lambda Documentation |
-| 4 | - Check CloudWatch Logs | 03/07/2026 | 04/07/2026 | AWS CloudWatch Documentation |
-| 5 | - Verify dashboard connection with backend | 06/07/2026 | 06/07/2026 | FCAJ Workshop / Vertex IntervAI |
+| 1 | - Study advanced Networking, Security, and cost optimization services | 15/06/2026 | 16/06/2026 | AWS Networking Documentation |
+| 2 | - Consolidate comprehensive AWS knowledge | 17/06/2026 | 19/06/2026 | AWS Documentation |
+| 3 | - Prepare the technical foundation for the project | 20/06/2026 | 21/06/2026 | FCAJ Workshop / Vertex IntervAI |
 
 ### Week 9 Achievements:
 
-* CV analysis backend is operational.
-* Dashboard connects smoothly.
-* API security is stable.
+* Learned advanced Amazon VPC topics: VPC Peering, Transit Gateway, and PrivateLink.
+* Practiced AWS Direct Connect, VPN, and advanced Route 53.
+* Studied AWS Cost Explorer, Budgets, and Trusted Advisor.
+* Studied AWS Config, CloudTrail, and GuardDuty for monitoring and compliance.
+* Completed hands-on labs about Hybrid Networking and Cost Optimization.

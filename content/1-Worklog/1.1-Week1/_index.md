@@ -8,22 +8,24 @@ pre: " <b> 1.1. </b> "
 
 ### Week 1 Objectives:
 
-* Get acquainted with internship content and define early-stage goals.
-* Create AWS account, learn Console/CLI and basic services (EC2, S3, IAM).
+* Get familiar with the internship scope and early-stage goals.
+* Create an AWS account and learn the AWS Console, CLI, and cost-control basics.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | ------------ | --------------- | -------------- |
-| 1 | - Get acquainted with internship content and define early-stage goals | 17/04/2026 | 17/04/2026 | FCAJ Workshop |
-| 2 | - Create AWS account and activate Free Tier <br> - Explore AWS Management Console and Region structure | 18/04/2026 | 19/04/2026 | AWS Documentation |
-| 3 | - Learn basic services: EC2, S3, IAM <br> - Refer to official AWS documentation | 20/04/2026 | 21/04/2026 | AWS Documentation |
-| 4 | - Install AWS CLI and run basic commands | 22/04/2026 | 23/04/2026 | AWS CLI Documentation |
-| 5 | - Learn cost management and budget setup on AWS | 25/04/2026 | 25/04/2026 | AWS Billing Documentation |
+| 1 | - Get acquainted with the internship content and define early-stage goals | 17/04/2026 | 17/04/2026 | AWS Documentation |
+| 2 | - Create an Amazon Web Services account and activate the Free Tier | 18/04/2026 | 19/04/2026 | AWS Documentation |
+| 3 | - Explore the AWS Management Console and Region-based service organization | 20/04/2026 | 20/04/2026 | AWS Documentation |
+| 4 | - Learn core services such as EC2, S3, and IAM | 21/04/2026 | 22/04/2026 | AWS S3 Documentation |
+| 5 | - Install AWS CLI and run basic commands | 23/04/2026 | 23/04/2026 | AWS Documentation |
+| 6 | - Learn cost management and budget setup on AWS | 24/04/2026 | 25/04/2026 | AWS Cost Management Documentation |
+| 7 | - Review official AWS documentation and support channels | 26/04/2026 | 26/04/2026 | AWS Documentation |
 
 ### Week 1 Achievements:
 
 * Successfully created and used an AWS account.
 * Understood the basic structure of the AWS cloud platform.
-* Grasped the functions of key services (EC2, S3, IAM).
-* Learned how to control costs when using cloud services.
-* Became familiar with operating AWS via both console and CLI.
+* Understood the purpose of several core AWS services.
+* Learned how to control cloud-service costs.
+* Became familiar with both AWS Console and CLI operations.

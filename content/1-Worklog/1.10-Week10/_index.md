@@ -1,6 +1,6 @@
 ---
 title: "Week 10 Worklog"
-date: 2026-07-22
+date: 2026-06-22
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
@@ -8,20 +8,21 @@ pre: " <b> 1.10. </b> "
 
 ### Week 10 Objectives:
 
-* Deploy AI interview feature with per-user data isolation.
-* Ensure user data security and support team QA.
+* Learn basic AWS AI/ML services and workflow orchestration.
+* Contribute to the high-level architecture for the workshop project.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | ------------ | --------------- | -------------- |
-| 1 | - Attach Cognito userId to backend | 07/07/2026 | 07/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 2 | - Ensure data isolation per user | 08/07/2026 | 09/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 3 | - Test multi-user flow | 10/07/2026 | 11/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 4 | - Configure IAM permissions for interview API | 12/07/2026 | 13/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 5 | - Support team QA | 14/07/2026 | 14/07/2026 | FCAJ Workshop / Vertex IntervAI |
+| 1 | - Learn Amazon SageMaker basics, Rekognition, and Comprehend for AI/ML use cases | 22/06/2026 | 22/06/2026 | AWS AI/ML Documentation |
+| 2 | - Learn AWS Step Functions and EventBridge for workflow orchestration | 23/06/2026 | 24/06/2026 | AWS Serverless Documentation |
+| 3 | - Join group meetings and design the overall project High-level Architecture | 25/06/2026 | 25/06/2026 | FCAJ Workshop / Vertex IntervAI |
+| 4 | - Draw the proposed architecture diagram using draw.io or AWS Perspective | 26/06/2026 | 27/06/2026 | FCAJ Workshop / Vertex IntervAI |
+| 5 | - Practice labs integrating AI/ML and workflow orchestration | 28/06/2026 | 28/06/2026 | AWS AI/ML Documentation |
 
 ### Week 10 Achievements:
 
-* AI interview feature is operational.
-* User data security is solid.
-* Supported team QA.
+* Completed foundational knowledge for most core AWS services.
+* Contributed the initial architecture design for the group project.
+* Accumulated more than 18 hours of hands-on practice and group discussion.
+* Gained the ability to propose suitable architecture solutions.

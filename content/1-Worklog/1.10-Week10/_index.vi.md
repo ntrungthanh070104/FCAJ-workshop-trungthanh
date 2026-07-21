@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 10"
-date: 2026-07-22
+date: 2026-06-22
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
@@ -8,20 +8,21 @@ pre: " <b> 1.10. </b> "
 
 ### Mục tiêu tuần 10:
 
-* Triển khai chức năng phỏng vấn AI với data isolation theo user.
-* Đảm bảo bảo mật user data và hỗ trợ QA cho nhóm.
+* Tìm hiểu các dịch vụ AI/ML cơ bản và workflow orchestration trên AWS.
+* Đóng góp thiết kế kiến trúc tổng thể cho dự án Workshop.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | ------------ | --------------- | -------------- |
-| 1 | - Gắn Cognito userId vào backend | 07/07/2026 | 07/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 2 | - Đảm bảo data isolation per user | 08/07/2026 | 09/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 3 | - Test flow multi-user | 10/07/2026 | 11/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 4 | - Cấu hình quyền IAM cho interview API | 12/07/2026 | 13/07/2026 | FCAJ Workshop / Vertex IntervAI |
-| 5 | - Hỗ trợ QA cho nhóm | 14/07/2026 | 14/07/2026 | FCAJ Workshop / Vertex IntervAI |
+| 1 | - Học Amazon SageMaker (cơ bản), Rekognition, Comprehend – các dịch vụ AI/ML. | 22/06/2026 | 22/06/2026 | AWS AI/ML Documentation |
+| 2 | - Tìm hiểu AWS Step Functions và EventBridge để orchestrate workflow. | 23/06/2026 | 24/06/2026 | AWS Serverless Documentation |
+| 3 | - Tham gia họp nhóm và cùng thiết kế kiến trúc tổng thể dự án (High-level Architecture). | 25/06/2026 | 25/06/2026 | FCAJ Workshop / Vertex IntervAI |
+| 4 | - Vẽ diagram kiến trúc đề xuất (sử dụng công cụ draw.io hoặc AWS Perspective). | 26/06/2026 | 27/06/2026 | FCAJ Workshop / Vertex IntervAI |
+| 5 | - Thực hành lab tích hợp AI/ML và workflow orchestration. | 28/06/2026 | 28/06/2026 | AWS AI/ML Documentation |
 
 ### Kết quả đạt được tuần 10:
 
-* Chức năng phỏng vấn AI hoạt động.
-* Bảo mật user data tốt.
-* Hỗ trợ QA cho nhóm.
+* Hoàn thành kiến thức nền tảng hầu hết các dịch vụ AWS chính.
+* Đóng góp thiết kế kiến trúc ban đầu cho dự án nhóm.
+* Tích lũy hơn 18 giờ hands-on + thời gian thảo luận nhóm.
+* Có khả năng đề xuất giải pháp kiến trúc phù hợp
