@@ -1,124 +1,89 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2024-05-09
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
-
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch FCAJ Community Day 2026
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Chia sẻ kỹ năng tạo động lực học tập và quản lý thời gian
+- Hướng dẫn kỹ thuật Prompt Engineering tối ưu hóa mô hình AI
+- Chia sẻ định hướng nghề nghiệp và tầm quan trọng của kiến thức nền tảng
+- Giới thiệu phương pháp BMX trong quy trình phát triển phần mềm với AI
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- Speaker 1 - Chia sẻ về động lực học tập và quản lý Dopamine
+- Khang - Trình bày về Ultimate Prompt Engineering & AWS Architecture
+- Senior Architect từ Cloud Kinetics - Định hướng nghề nghiệp IT
+- Thảo - Software Developer tại VIB, trình bày về phương pháp BMX
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Hack não bộ và duy trì động lực học tập
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- Quản lý Dopamine: Biến việc học thú vị như chơi game bằng cách tạo kỳ vọng phần thưởng.
+- Quy tắc 2 phút: Việc gì làm được trong 2 phút thì giải quyết ngay để tránh trì hoãn.
+- Chia nhỏ mục tiêu: Giảm cảm giác ngợp khi học kiến thức mới.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Ultimate Prompt Engineering và Kiến trúc AWS
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+- Các thành phần của một prompt tốt: Role, Task, Context, Format, Constraint.
+- Các kỹ thuật nâng cao: Chain of Thought, Tree of Thought.
+- Kiến trúc Serverless: Sử dụng CloudFront, S3, Cognito, API Gateway, AWS Lambda và Amazon Bedrock kết hợp cơ sở dữ liệu DynamoDB.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+#### Định hướng nghề nghiệp và Mindset
 
-#### Domain-Driven Design (DDD)
+- AI Amplify: AI là công cụ khuếch đại, người giỏi sẽ giỏi hơn, người kém sẽ lộ rõ điểm yếu nếu không có kiến thức nền tảng.
+- Luôn đặt câu hỏi Why: Hiểu rõ lý do đằng sau mỗi quyết định thiết kế hệ thống.
+- Sự liêm chính (Integrity): Tính trung thực và làm việc đến cùng trong các dự án thực tế.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Phương pháp BMX trong AI Development
 
-#### Event-Driven Architecture
-
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
-
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+- Khắc phục AI Hallucination: Tránh nhồi nhét toàn bộ yêu cầu vào một luồng chat duy nhất.
+- Phân chia vai trò rõ ràng: Sử dụng các AI Agent đóng vai trò PM, Architect, Scrum Master, Dev, và QA/QC tester.
+- Tối ưu hóa quy trình: AI chỉ thực thi dựa trên các story đã được phê duyệt, sau đó chuyển qua bước review và test tự động.
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Tư Duy Thiết Kế và Phát Triển
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- Business-first: AI hỗ trợ lên kế hoạch và viết document chuẩn chỉnh trước khi bắt tay vào code.
+- Trải nghiệm thực tế: Không ngại mắc sai lầm khi bắt đầu môi trường làm việc mới.
 
 #### Kiến Trúc Kỹ Thuật
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- Hệ thống Serverless: Tận dụng AWS Lambda và Amazon Bedrock để tích hợp AI mà không cần quản lý server.
+- Quản lý Context Window: Chia nhỏ các tác vụ phần mềm để AI Agent xử lý chính xác hơn, kết hợp với các kỹ thuật kiểm thử White-box và Black-box.
 
 ### Ứng Dụng Vào Công Việc
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- Áp dụng phương pháp BMX: Đưa các AI Agent (Dev, QA/QC) vào quy trình phát triển dự án nhóm 4 người để tự động hóa việc viết code và thiết kế test case.
+- Triển khai kiến trúc Serverless: Sử dụng AWS Lambda, Amazon Bedrock và API Gateway cho các hệ thống quản lý sinh viên và thư viện.
+- Duy trì thói quen học tập: Áp dụng quy tắc chia nhỏ mục tiêu để cải thiện dần điểm GPA tại HUTECH.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia FCAJ Community Day là một trải nghiệm tuyệt vời giúp mở rộng góc nhìn về việc tích hợp AI vào vòng đời phát triển phần mềm và xây dựng kiến trúc Cloud.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Học hỏi từ các diễn giả thực tế
+Các kỹ sư từ VIB và Cloud Kinetics đã mang đến những câu chuyện thực tế về ứng dụng Prompt Engineering và các dịch vụ AWS. Đặc biệt, kiến trúc sử dụng AWS Lambda và Bedrock rất phù hợp để triển khai các dự án trong tương lai.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+#### Trải nghiệm kỹ thuật và quy trình
+Phương pháp BMX mang lại giải pháp đột phá trong việc quản lý dự án. Việc phân chia các tác vụ cho từng AI Agent, từ PM lên kế hoạch đến QA thực hiện kiểm thử, giúp quá trình làm việc nhóm hiệu quả hơn và hạn chế tối đa rủi ro sinh ra code rác.
 
 #### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+Kiến thức nền tảng luôn là giá trị cốt lõi. AI chỉ là công cụ hỗ trợ để tăng năng suất. Sự kiện đã tiếp thêm động lực để hoàn thiện các dự án cá nhân và tối ưu hóa các quy trình bằng công nghệ hiện đại.
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+
+
+
+
+
 
 ![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/2aOboQmASENbcZPY0OHURXVyRcYrVRtq8QvyQsim.png)
 ![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/2aOboQmASEbc3tYshWJgnsNzoWRoEefXZjW7mVBg.png)
