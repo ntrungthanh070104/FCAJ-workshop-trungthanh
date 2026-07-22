@@ -1,24 +1,32 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-21
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Xây dựng Vertex-IntervAI trên AWS Serverless
+# Workshop triển khai Vertex-IntervAI
 
-#### Tổng quan
+Workshop này hướng dẫn triển khai hệ thống **Vertex-IntervAI** lên AWS theo từng service. Cấu trúc được chia giống một workshop triển khai thật: chuẩn bị môi trường, triển khai từng dịch vụ AWS, kết nối frontend, kiểm thử và dọn dẹp tài nguyên.
 
-Workshop này hướng dẫn xây dựng phần AWS backend và database cho Vertex-IntervAI / Talent Graph AI. Bạn sẽ kết nối frontend React + Vite với backend serverless để upload CV, phân tích CV, tạo câu hỏi phỏng vấn theo role, chấm điểm câu trả lời, lưu kết quả, hỗ trợ voice và cung cấp admin operations.
 
-Workshop vẫn giữ số thứ tự thư mục hiện tại để sidebar không bị gãy, nhưng toàn bộ nội dung đã được đổi từ template cũ sang đúng kiến trúc đồ án của bạn.
 
 #### Nội dung
 
-1. [Tổng quan workshop](5.1-Workshop-overview)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Data layer: S3 và DynamoDB](5.3-S3-vpc/)
-4. [Backend APIs: Lambda và API Gateway](5.4-S3-onprem/)
-5. [Security, roles và observability](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Giới thiệu](5.1-overview/)
+2. [Chuẩn bị môi trường](5.2-preparation/)
+3. [Triển khai Amazon Cognito](5.3-cognito/)
+4. [Triển khai Amazon S3](5.4-s3-storage/)
+5. [Triển khai Amazon DynamoDB](5.5-dynamodb/)
+6. [Triển khai AWS Lambda](5.6-lambda-backend/)
+7. [Triển khai Amazon API Gateway](5.7-api-gateway/)
+8. [Triển khai AI và Voice services](5.8-ai-voice/)
+9. [Triển khai Frontend](5.9-frontend/)
+10. [Kiểm thử hệ thống](5.10-testing/)
+11. [Dọn dẹp tài nguyên](5.11-cleanup/)
+12. [Video Demo](5.12-demo/)
+
+#### Kết quả đạt được
+
+Sau workshop, người dùng có thể truy cập website thật, đăng nhập bằng Cognito, upload CV, phân tích CV bằng AI, tạo phiên phỏng vấn, trả lời câu hỏi bằng text/microphone, xem kết quả và quản trị dữ liệu qua Admin Console.

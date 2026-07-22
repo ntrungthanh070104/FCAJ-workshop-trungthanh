@@ -1,35 +1,41 @@
 ---
-title: "Self-Assessment"
+title: "Self-Evaluation"
 date: 2024-01-01
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+During my internship, I had the opportunity to work on an AWS Serverless and AI-based workshop project. This helped me connect what I learned in school with practical development work, especially in system design, cloud services, and implementation planning.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+Throughout the project, I improved my ability to read requirements, break down tasks, and work more carefully with documentation and technical details. I also became more familiar with teamwork, version control, and the process of building features step by step.
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
+Overall, I consider my internship period to be a valuable learning experience. I was able to complete assigned tasks responsibly, adapt to new tools, and improve my technical mindset. At the same time, I also identified several areas that still need more practice.
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+| No. | Criteria | Description | Good | Fair | Average |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Professional knowledge & skills | Understands the subject and applies knowledge in practice | X |  |  |
+| 2 | Ability to learn | Can absorb new knowledge and adapt quickly | X |  |  |
+| 3 | Proactiveness | Takes initiative and looks for solutions | X |  |  |
+| 4 | Responsibility | Completes assigned work seriously and on time | X |  |  |
+| 5 | Discipline | Follows schedules, rules, and working processes |  | X |  |
+| 6 | Growth mindset | Accepts feedback and tries to improve |  | X |  |
+| 7 | Communication | Communicates ideas and progress clearly |  | X |  |
+| 8 | Teamwork | Cooperates well with teammates and supports common goals | X |  |  |
+| 9 | Professional conduct | Behaves respectfully in the working environment | X |  |  |
+| 10 | Problem-solving skills | Identifies issues and proposes reasonable solutions |  | X |  |
+| 11 | Contribution to project | Contributes positively to the overall project progress | X |  |  |
+| 12 | Overall | General self-assessment of the internship period | X |  |  |
 
-### Needs Improvement
+### Strengths
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+* Strong sense of responsibility when completing assigned tasks  
+* Good ability to learn and adapt to new technologies  
+* Positive attitude toward teamwork and project coordination  
+* Careful work style and willingness to improve based on feedback
+
+### Areas for Improvement
+
+* Need to improve time management and personal discipline  
+* Need more practice in problem-solving and debugging under pressure  
+* Need to communicate progress and technical issues more proactively

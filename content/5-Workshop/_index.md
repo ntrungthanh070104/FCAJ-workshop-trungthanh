@@ -1,24 +1,32 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-21
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Build Vertex-IntervAI on AWS Serverless
+# Vertex-IntervAI Deployment Workshop
 
-#### Overview
+This workshop explains how to deploy **Vertex-IntervAI** on AWS by service. The structure follows a real deployment workshop: prepare the environment, deploy each AWS service, connect the frontend, test the system, and clean up resources.
 
-This workshop guides you through the AWS backend and database foundation for Vertex-IntervAI / Talent Graph AI. You will connect a React + Vite frontend to a serverless backend that uploads and analyzes CVs, generates role-based interview questions, evaluates answers, stores results, supports voice features, and exposes admin operations.
 
-The workshop keeps the existing section numbers so the documentation menu remains stable, but each section now maps to the real project architecture instead of the old template lab.
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequisites](5.2-Prerequiste/)
-3. [Data layer: S3 and DynamoDB](5.3-S3-vpc/)
-4. [Backend APIs: Lambda and API Gateway](5.4-S3-onprem/)
-5. [Security, roles, and observability](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Overview](5.1-overview/)
+2. [Environment preparation](5.2-preparation/)
+3. [Deploy Amazon Cognito](5.3-cognito/)
+4. [Deploy Amazon S3](5.4-s3-storage/)
+5. [Deploy Amazon DynamoDB](5.5-dynamodb/)
+6. [Deploy AWS Lambda](5.6-lambda-backend/)
+7. [Deploy Amazon API Gateway](5.7-api-gateway/)
+8. [Deploy AI and Voice services](5.8-ai-voice/)
+9. [Deploy Frontend](5.9-frontend/)
+10. [System testing](5.10-testing/)
+11. [Clean up resources](5.11-cleanup/)
+12. [Video Demo](5.12-demo/)
+
+#### Expected result
+
+After the workshop, users can access the real website, sign in with Cognito, upload CVs, analyze CVs with AI, create interview sessions, answer questions with text/microphone, review results, and manage data through the Admin Console.

@@ -6,21 +6,11 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-> Trong phần này, các bạn cần liệt kê và mô tả chi tiết các sự kiện (event) mà mình đã tham gia trong suốt quá trình thực tập hoặc làm việc. 
-> 
-> Mỗi sự kiện nên được trình bày theo định dạng Event 1, Event 2, Event 3…, kèm theo các thông tin:
-> * Tên sự kiện
-> * Thời gian tổ chức
-> * Địa điểm (nếu có)
-> * Vai trò của bạn trong sự kiện (người tham dự, hỗ trợ tổ chức, diễn giả, v.v.)
-> * Mô tả ngắn gọn nội dung và hoạt động chính trong sự kiện
-> * Kết quả hoặc giá trị đạt được (bài học, kỹ năng mới, đóng góp cho nhóm/dự án)
-> * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
 
 Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** Tham gia FCAJ Community Day 2026
+&emsp;**Tên sự kiện:** FCAJ Meetup 06/06/2026
 
 &emsp;**Thời gian:** 09:00 ngày 09/05/2026
 
@@ -28,12 +18,32 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
-### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+&emsp;**Mô tả ngắn gọn:**FCAJ Community Day diễn ra vào ngày 09/05/2026 là một buổi meetup mang lại rất nhiều giá trị thực tế về công nghệ, cách học tập hiệu quả và định hướng nghề nghiệp. Sự kiện quy tụ nhiều diễn giả chia sẻ từ kỹ năng mềm đến các kiến trúc hệ thống và quy trình phát triển chuyên sâu.
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+### [Event 2](4.2-Event2/)
+&emsp;**Tên sự kiện:** FCAJ Meetup 06/06/2026
+
+&emsp;**Thời gian:** 09:00 Ngày 06/06/2026
 
 &emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
+
+&emsp;**Mô tả ngắn gọn:** Buổi meetup công nghệ chia sẻ các case-study thực tế về kỹ thuật hệ thống. Nội dung bao gồm kết nối Godot game clients với AWS WebSockets, kiến thức cốt lõi về Docker cùng cơ chế Layer Caching giúp tối ưu thời gian build image, giải pháp kết hợp AWS WAF và Học máy (ML) để phát hiện tấn công mạng. Đặc biệt là phần chia sẻ truyền cảm hứng về hành trình từ IT Helpdesk vươn lên vị trí Senior Sysadmin.
+
+### [Event 3](4.3-Event3/)
+&emsp;**Tên sự kiện:** Khám phá kiến trúc điện toán đám mây và ứng dụng thực tiễn cùng Amazon Web Services (AWS)
+
+
+&emsp;**Thời gian:** 09:00 Ngày 04/07/2026
+
+
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự 
+
+
+&emsp;**Mô tả ngắn gọn:** Buổi sự kiện kết nối cùng các bạn sinh viên Swinburne và các chuyên gia đến từ AWS, Cloud Kinetics, Renova Cloud. Nội dung tập trung phân tích thực trạng thị trường tuyển dụng Cloud theo mô hình kim tự tháp (ưu tiên Seniors), sự khác biệt giữa dữ liệu giảng đường và thực tế doanh nghiệp, hành trình 5 năm làm Data Engineering và định hướng tư duy, thái độ chuẩn bị cho một “AI-Ready Fresher”.
+
 

@@ -1,55 +1,50 @@
 ---
-title : "Workshop Overview"
-date : 2024-01-01
-weight : 1
-chapter : false
-pre : " <b> 5.1. </b> "
+title: "Overview"
+date: 2026-07-21
+weight: 1
+chapter: false
+pre: " <b> 5.1. </b> "
 ---
 
-#### Vertex-IntervAI workflow
+#### Goal
 
-Vertex-IntervAI is an AI interview preparation system that starts from a candidate CV and ends with a scored interview result. The application has two main personas:
+This project aims to build an intelligent interview training system based on personal CVs. The system uses AWS Serverless services combined with AI to analyze CVs, generate interview questions based on roles, support written or voice responses, evaluate answers, and record training history. Through this, users can improve their interview skills, identify strengths and weaknesses, and better prepare for the recruitment process.
 
-- **Candidate**: uploads CVs, chooses a role, answers AI interview questions, reviews results, and tracks history.
-- **Admin**: reviews users, uploaded CVs, interviews, review queues, audit activity, CSV exports, and feedback email workflows.
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/bieudo.jpeg)
 
-```mermaid
-flowchart TD
-  A["Open React frontend"] --> B["Sign in with Cognito"]
-  B --> C["Upload CV"]
-  C --> D["Store CV in S3 and metadata in DynamoDB"]
-  D --> E["Analyze CV with Bedrock Nova Lite"]
-  E --> F["Choose interview role and question count"]
-  F --> G["Generate interview questions"]
-  G --> H["Answer by text or voice"]
-  H --> I["Score answer and save attempt"]
-  I --> J{"More questions?"}
-  J -- Yes --> H
-  J -- No --> K["Show final result and advice"]
-  K --> L["Save and review history"]
-  B --> M["Admin console for admin group"]
-```
+#### Main features
 
-#### Main AWS components
+| Feature | Description |
+| --- | --- |
+| Authentication | Users sign up/sign in through Amazon Cognito Hosted UI. |
+| CV upload | Frontend sends base64 CV to Lambda; Lambda stores the file in S3. |
+| CV analysis | Lambda reads CV from S3 and analyzes it with Amazon Bedrock Nova Lite or fallback logic. |
+| AI Interview | The system creates role/CV-based questions; question count is selectable from frontend. |
+| Scoring | Lambda receives answers and returns score, feedback, and improvement advice. |
+| Voice | Polly creates question audio; Transcribe converts answer audio to text. |
+| History/Result | Users review CV history, interview history, final score, and advice. |
+| Admin Console | Admins manage users, CVs, interviews, review queue, audit log, and CSV export. |
 
-- **Amazon Cognito** authenticates users and provides JWT tokens.
-- **Amazon API Gateway** receives frontend API calls and validates authorization.
-- **AWS Lambda** runs the backend business logic.
-- **Amazon S3** stores uploaded CV files and voice assets.
-- **Amazon DynamoDB** stores user profiles, CV metadata, interview questions, answers, attempts, scores, and history.
-- **Amazon Bedrock** powers CV analysis, interview generation, and answer evaluation.
-- **Amazon Polly** generates question audio.
-- **Amazon Transcribe** converts voice answers to text.
-- **Amazon CloudWatch Logs** supports debugging and operations.
+#### Integrated AWS services
 
-#### Workshop goals
+* Amazon Cognito
+* Amazon S3
+* Amazon DynamoDB
+* AWS Lambda
+* Amazon API Gateway
+* Amazon Bedrock
+* Amazon Polly
+* Amazon Transcribe
+* Amazon CloudWatch
+* AWS Amplify Hosting
 
-By the end of the workshop, you should have:
+#### Deployment flow
 
-- S3 buckets/prefixes for CV and voice files.
-- DynamoDB tables for `Users`, `CVs`, and `Interviews`.
-- Lambda functions configured with environment variables and IAM permissions.
-- API Gateway routes for user, interview, voice, history, and admin APIs.
-- Cognito User Pool, App Client, Hosted UI, callback/logout URLs, and groups `user/admin`.
-- Frontend `.env` values connected to your deployed APIs.
-- A tested flow from CV upload to interview result and history detail.
+1. Prepare Region, budget, source code, and environment variables.
+2. Create Cognito for user authentication.
+3. Create S3 and DynamoDB for storage/database.
+4. Deploy Lambda backend.
+5. Create API Gateway routes and JWT Authorizer.
+6. Enable Bedrock/Polly/Transcribe for AI and voice.
+7. Deploy frontend with Amplify Hosting.
+8. Test the full user flow and admin flow.
