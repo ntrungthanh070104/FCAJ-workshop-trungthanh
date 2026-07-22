@@ -16,10 +16,10 @@ pre: " <b> 4.1. </b> "
 
 ### Speakers
 
-- **Speaker 1 (AWS Study Group)** – Shared about learning motivation and Dopamine
-- **Khang** – Presented on Ultimate Prompt Engineering
+- **Hoang Long (AWS Study Group)** – Shared about learning motivation and Dopamine
+- **Nguyen Khang** – Presented on Ultimate Prompt Engineering
 - **Solutions Architect from Cloud Kinetics** – Shared career orientation and mindsets
-- **Thao** – Software Developer at VIB, presented the BMX method
+- **Nguyen Thao Phuong** – Software Developer at VIB, presented the BMX method
 
 ### Key Highlights
 

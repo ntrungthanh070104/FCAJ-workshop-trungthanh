@@ -16,10 +16,10 @@ pre: " <b> 4.1. </b> "
 
 ### Danh Sách Diễn Giả
 
-- Speaker 1 - Chia sẻ về động lực học tập và quản lý Dopamine
-- Khang - Trình bày về Ultimate Prompt Engineering & AWS Architecture
+- Hoang Long - Chia sẻ về động lực học tập và quản lý Dopamine
+- Nguyen Khang  - Trình bày về Ultimate Prompt Engineering & AWS Architecture
 - Senior Architect từ Cloud Kinetics - Định hướng nghề nghiệp IT
-- Thảo - Software Developer tại VIB, trình bày về phương pháp BMX
+- Nguyen Thao Phuong - Software Developer tại VIB, trình bày về phương pháp BMX
 
 ### Nội Dung Nổi Bật
 
