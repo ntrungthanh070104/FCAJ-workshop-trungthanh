@@ -18,7 +18,7 @@ During my internship, I participated in two events. Each one was a memorable exp
 &emsp;**Role:** Attendee  
 
 &emsp;**Collapse description:**Taking place on May 9, 2026, FCAJ Community Day is a meetup that delivers significant practical value regarding technology, effective learning methods, and career guidance. The event brings together numerous speakers who share insights ranging from soft skills to in-depth system architecture and development processes.
----
+
 
 ### [Event 2](4.2-Event2/)  
 &emsp;**Event Name:** FCAJ Meetup 06/06/2026

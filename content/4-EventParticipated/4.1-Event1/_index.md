@@ -121,5 +121,5 @@ Attending the **“GenAI-powered App-DB Modernization”** workshop was extremel
 
 > Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
 
-![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/521.png)
-![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/521.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.1.png)
