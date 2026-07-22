@@ -6,12 +6,12 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Đề xuất Vertex-IntervAI / Talent Graph AI
+# Đề xuất Vertex-IntervAI 
 ## Nền tảng phỏng vấn AI trên AWS Serverless
 
 ### 1. Tóm tắt dự án
 
-Vertex-IntervAI, còn được gọi là Talent Graph AI, là một ứng dụng web hỗ trợ ứng viên luyện phỏng vấn dựa trên chính CV của họ. Người dùng tải CV lên, hệ thống lưu trữ CV an toàn, phân tích nội dung bằng AI, tạo câu hỏi phỏng vấn theo CV và role đã chọn, cho phép trả lời bằng văn bản hoặc giọng nói, chấm điểm từng câu trả lời, sau đó trả về kết quả kèm điểm số, nhận xét và lời khuyên cải thiện.
+Vertex-IntervAI, là một ứng dụng web hỗ trợ ứng viên luyện phỏng vấn dựa trên chính CV của họ. Người dùng tải CV lên, hệ thống lưu trữ CV an toàn, phân tích nội dung bằng AI, tạo câu hỏi phỏng vấn theo CV và role đã chọn, cho phép trả lời bằng văn bản hoặc giọng nói, chấm điểm từng câu trả lời, sau đó trả về kết quả kèm điểm số, nhận xét và lời khuyên cải thiện.
 
 Dự án sử dụng frontend React + Vite và backend AWS Serverless. Backend được xây dựng bằng Amazon API Gateway, AWS Lambda, Amazon S3, Amazon DynamoDB, Amazon Cognito, Amazon Bedrock, Amazon Polly, Amazon Transcribe, Amazon CloudWatch và Amazon SES cho hướng phát triển gửi email phản hồi.
 

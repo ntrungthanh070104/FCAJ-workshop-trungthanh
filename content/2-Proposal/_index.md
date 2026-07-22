@@ -6,12 +6,12 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Vertex-IntervAI / Talent Graph AI Proposal
+# Vertex-IntervAI 
 ## An AWS Serverless AI Interview Platform
 
 ### 1. Executive Summary
 
-Vertex-IntervAI, also named Talent Graph AI, is a web application that helps candidates prepare for interviews from their own CV. A user uploads a CV, the system stores it securely, analyzes it with AI, creates interview questions based on the CV and selected role, accepts typed or voice answers, evaluates each answer, and returns a result with scores, feedback, and improvement advice.
+Vertex-IntervAI, is a web application that helps candidates prepare for interviews from their own CV. A user uploads a CV, the system stores it securely, analyzes it with AI, creates interview questions based on the CV and selected role, accepts typed or voice answers, evaluates each answer, and returns a result with scores, feedback, and improvement advice.
 
 The project uses a React + Vite frontend and an AWS Serverless backend. The backend is built with API Gateway, AWS Lambda, Amazon S3, Amazon DynamoDB, Amazon Cognito, Amazon Bedrock, Amazon Polly, Amazon Transcribe, Amazon CloudWatch, and Amazon SES for future feedback email.
 
