@@ -14,18 +14,18 @@ Nhìn chung, tôi đánh giá quá trình thực tập là một trải nghiệm
 
 | STT | Tiêu chí | Mô tả | Tốt | Khá | Trung bình |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Kiến thức và kỹ năng chuyên môn | Hiểu nội dung công việc và biết áp dụng kiến thức vào thực tế | X |  |  |
-| 2 | Khả năng học hỏi | Tiếp thu kiến thức mới và thích nghi với công cụ mới | X |  |  |
-| 3 | Tính chủ động | Chủ động tìm hiểu, đề xuất và xử lý công việc | X |  |  |
-| 4 | Tinh thần trách nhiệm | Hoàn thành công việc được giao nghiêm túc và đúng hạn | X |  |  |
-| 5 | Kỷ luật | Tuân thủ thời gian, nội quy và quy trình làm việc |  | X |  |
-| 6 | Tinh thần cầu tiến | Tiếp nhận góp ý và cải thiện bản thân |  | X |  |
-| 7 | Giao tiếp | Trình bày ý tưởng, báo cáo tiến độ và trao đổi công việc |  | X |  |
-| 8 | Làm việc nhóm | Phối hợp với các thành viên để hoàn thành mục tiêu chung | X |  |  |
-| 9 | Tác phong chuyên nghiệp | Tôn trọng đồng nghiệp, có thái độ nghiêm túc trong công việc | X |  |  |
-| 10 | Tư duy giải quyết vấn đề | Nhận diện vấn đề và đề xuất hướng xử lý phù hợp |  | X |  |
-| 11 | Đóng góp cho dự án | Góp phần hoàn thiện nội dung và tiến độ chung của dự án | X |  |  |
-| 12 | Đánh giá tổng thể | Mức độ hoàn thành và phát triển trong kỳ thực tập | X |  |  |
+| 1 | Kiến thức và kỹ năng chuyên môn | Hiểu nội dung công việc và biết áp dụng kiến thức vào thực tế |✅|  |  |
+| 2 | Khả năng học hỏi | Tiếp thu kiến thức mới và thích nghi với công cụ mới | ✅  |  |  |
+| 3 | Tính chủ động | Chủ động tìm hiểu, đề xuất và xử lý công việc | ✅  |  |  |
+| 4 | Tinh thần trách nhiệm | Hoàn thành công việc được giao nghiêm túc và đúng hạn | ✅  |  |  |
+| 5 | Kỷ luật | Tuân thủ thời gian, nội quy và quy trình làm việc |  | ✅  |  |
+| 6 | Tinh thần cầu tiến | Tiếp nhận góp ý và cải thiện bản thân |  | ✅  |  |
+| 7 | Giao tiếp | Trình bày ý tưởng, báo cáo tiến độ và trao đổi công việc |  | ✅  |  |
+| 8 | Làm việc nhóm | Phối hợp với các thành viên để hoàn thành mục tiêu chung | ✅  |  |  |
+| 9 | Tác phong chuyên nghiệp | Tôn trọng đồng nghiệp, có thái độ nghiêm túc trong công việc | ✅  |  |  |
+| 10 | Tư duy giải quyết vấn đề | Nhận diện vấn đề và đề xuất hướng xử lý phù hợp |  | ✅  |  |
+| 11 | Đóng góp cho dự án | Góp phần hoàn thiện nội dung và tiến độ chung của dự án | ✅  |  |  |
+| 12 | Đánh giá tổng thể | Mức độ hoàn thành và phát triển trong kỳ thực tập | ✅  |  |  |
 
 ### Điểm mạnh
 

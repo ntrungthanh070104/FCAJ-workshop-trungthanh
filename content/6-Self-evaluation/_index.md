@@ -14,18 +14,18 @@ Overall, I consider my internship period to be a valuable learning experience. I
 
 | No. | Criteria | Description | Good | Fair | Average |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Professional knowledge & skills | Understands the subject and applies knowledge in practice | X |  |  |
-| 2 | Ability to learn | Can absorb new knowledge and adapt quickly | X |  |  |
-| 3 | Proactiveness | Takes initiative and looks for solutions | X |  |  |
-| 4 | Responsibility | Completes assigned work seriously and on time | X |  |  |
-| 5 | Discipline | Follows schedules, rules, and working processes |  | X |  |
-| 6 | Growth mindset | Accepts feedback and tries to improve |  | X |  |
-| 7 | Communication | Communicates ideas and progress clearly |  | X |  |
-| 8 | Teamwork | Cooperates well with teammates and supports common goals | X |  |  |
-| 9 | Professional conduct | Behaves respectfully in the working environment | X |  |  |
-| 10 | Problem-solving skills | Identifies issues and proposes reasonable solutions |  | X |  |
-| 11 | Contribution to project | Contributes positively to the overall project progress | X |  |  |
-| 12 | Overall | General self-assessment of the internship period | X |  |  |
+| 1 | Professional knowledge & skills | Understands the subject and applies knowledge in practice | ✅  |  |  |
+| 2 | Ability to learn | Can absorb new knowledge and adapt quickly | ✅  |  |  |
+| 3 | Proactiveness | Takes initiative and looks for solutions | ✅  |  |  |
+| 4 | Responsibility | Completes assigned work seriously and on time | ✅  |  |  |
+| 5 | Discipline | Follows schedules, rules, and working processes |  | ✅  |  |
+| 6 | Growth mindset | Accepts feedback and tries to improve |  | ✅  |  |
+| 7 | Communication | Communicates ideas and progress clearly |  | ✅  |  |
+| 8 | Teamwork | Cooperates well with teammates and supports common goals | ✅  |  |  |
+| 9 | Professional conduct | Behaves respectfully in the working environment | ✅  |  |  |
+| 10 | Problem-solving skills | Identifies issues and proposes reasonable solutions |  | ✅  |  |
+| 11 | Contribution to project | Contributes positively to the overall project progress | ✅  |  |  |
+| 12 | Overall | General self-assessment of the internship period | ✅  |  |  |
 
 ### Strengths
 
