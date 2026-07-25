@@ -54,5 +54,5 @@ The competition showed that the 24-hour time pressure requires teamwork and high
 
 #### Some event photos
 
-![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.png)
-![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.1.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event4.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event4.1.png)
