@@ -46,7 +46,16 @@ During my internship, I participated in two events. Each one was a memorable exp
 
 &emsp;**Collapse description:** A collaborative event with Swinburne students and industry experts from AWS, Cloud Kinetics, and Renova Cloud. The speakers provided critical insights into the modern “Senior-heavy” Cloud recruitment market, highlighted the gap between classroom data and production-level infrastructure, shared personal 5-year data engineering career journeys, and outlined essential mindsets for AI-Ready Freshers.
 
+### [Event 4](4.4-Event4/)
+&emsp;**Event Name:** FCAJ x Agentic AI Build Week
 
+&emsp;**Date & Time:** 09:00 - July 25, 2026
+
+&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City
+
+&emsp;**Role:** Attendee
+
+&emsp;**Collapse description:** FCAJ x Agentic AI Build Week was a technical event focused on building Agentic AI applications using AWS services. The sessions introduced AI Agent architectures, the integration of Large Language Models (LLMs) with AWS services, AI application development workflows, and practical implementation examples. In addition to the technical presentations, attendees had the opportunity to interact with industry experts and gain valuable insights into the latest trends in AI and Cloud Computing.
 
 
 

@@ -7,7 +7,7 @@ pre: " <b> 4. </b> "
 ---
 
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia các sự kiện, với mỗi sự kiện là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là những món quà và những khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-Event1/)
 &emsp;**Tên sự kiện:** FCAJ Meetup 06/06/2026
@@ -46,4 +46,13 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 
 &emsp;**Mô tả ngắn gọn:** Buổi sự kiện kết nối cùng các bạn sinh viên Swinburne và các chuyên gia đến từ AWS, Cloud Kinetics, Renova Cloud. Nội dung tập trung phân tích thực trạng thị trường tuyển dụng Cloud theo mô hình kim tự tháp (ưu tiên Seniors), sự khác biệt giữa dữ liệu giảng đường và thực tế doanh nghiệp, hành trình 5 năm làm Data Engineering và định hướng tư duy, thái độ chuẩn bị cho một “AI-Ready Fresher”.
 
+### [Event 4](4.4-Event4/)
+&emsp;**Tên sự kiện:** FCAJ x Agentic AI Build Week
 
+&emsp;**Thời gian:** 09:00 Ngày 25/07/2026
+
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự
+
+&emsp;**Mô tả ngắn gọn:** FCAJ x Agentic AI Build Week là sự kiện công nghệ tập trung vào việc xây dựng các ứng dụng Agentic AI trên nền tảng AWS. Chương trình giới thiệu kiến trúc AI Agent, cách tích hợp các mô hình ngôn ngữ lớn (LLMs) với các dịch vụ AWS, quy trình phát triển ứng dụng AI và các ví dụ thực tế. Bên cạnh các phiên chia sẻ chuyên môn, người tham dự còn có cơ hội trao đổi với các chuyên gia và tìm hiểu những xu hướng mới trong lĩnh vực AI và Cloud Computing.
