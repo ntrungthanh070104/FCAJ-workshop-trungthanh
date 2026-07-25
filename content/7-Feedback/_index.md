@@ -43,10 +43,7 @@ I would confidently recommend this internship to other students because it combi
 
 ---
 
-### Suggestions & Expectations
+### Expectations
 
-- **Suggestion 1:** Hold biweekly mentor-intern review sessions focused on outcomes, improvement points, and next-step action plans.
-- **Suggestion 2:** Use a unified task handover format (objective, deliverables, quality criteria, and deadline) to reduce ambiguity and improve execution.
-- **Suggestion 3:** Add short internal sharing sessions on technical topics and workplace skills to accelerate intern development.
 - **Future expectation:** I would be glad to continue contributing in a more specialized role if future opportunities are available.
 - **Closing note:** Thank you to the FCAJ team, mentors, and coordinators for building a high-quality and development-focused internship experience.

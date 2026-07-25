@@ -43,10 +43,7 @@ Tôi sẵn sàng giới thiệu chương trình cho bạn bè vì đây là môi
 
 ---
 
-### Đề xuất và Định hướng tương lai
+### Định hướng tương lai
 
-- **Đề xuất cải thiện 1:** Tổ chức phiên review định kỳ 2 tuần/lần giữa mentor và thực tập sinh, tập trung vào kết quả đạt được, điểm cần cải thiện và kế hoạch hành động cho giai đoạn tiếp theo.
-- **Đề xuất cải thiện 2:** Chuẩn hóa mẫu tài liệu bàn giao nhiệm vụ (mục tiêu, đầu ra, tiêu chí đánh giá, hạn hoàn thành) để giảm sai lệch kỳ vọng và nâng cao chất lượng thực thi.
-- **Đề xuất cải thiện 3:** Triển khai thêm các buổi chia sẻ ngắn theo chủ đề kỹ thuật hoặc kỹ năng nghề nghiệp để tăng tốc quá trình học hỏi của thực tập sinh mới.
 - **Định hướng cá nhân:** Tôi mong muốn tiếp tục đồng hành với chương trình ở vai trò chuyên sâu hơn nếu có cơ hội, đồng thời đóng góp vào các hoạt động hỗ trợ thế hệ thực tập sinh tiếp theo.
 - **Lời cảm ơn:** Tôi trân trọng cảm ơn ban tổ chức FCAJ, mentor và toàn bộ đội ngũ đã tạo ra một môi trường thực tập chuyên nghiệp, tích cực và giàu giá trị phát triển.
