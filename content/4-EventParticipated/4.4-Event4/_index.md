@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.4. </b> "
 ---
 
-# Reflection on "FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!"
+# Reflection on "FCAJ x Agentic AI Build Week"
 
 ### Purpose of the Event
 
@@ -52,5 +52,7 @@ As an attendee, observing the teams from presenting their products to answering 
 Lessons learned
 The competition showed that the 24-hour time pressure requires teamwork and highly sharp decision-making. The passionate atmosphere of the event added great motivation to continuously hone software development skills and seek opportunities to participate directly in real-world hackathon projects in the future.
 
-Event Video:
-{{< youtube hz32VBrvW7M >}}
+#### Some event photos
+
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.1.png)

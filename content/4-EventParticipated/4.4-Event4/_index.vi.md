@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.4. </b> "
 ---
 
-# Bài thu hoạch "FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!"
+# Bài thu hoạch "FCAJ x Agentic AI Build Week"
 
 ### Mục Đích Của Sự Kiện
 
@@ -52,4 +52,8 @@ Với vai trò là người tham dự, việc quan sát các đội thi từ lú
 Bài học rút ra
 Cuộc thi cho thấy áp lực thời gian trong 24 giờ đòi hỏi khả năng làm việc nhóm và đưa ra quyết định cực kỳ nhạy bén. Không khí nhiệt huyết của sự kiện đã tiếp thêm động lực lớn để không ngừng trau dồi các kỹ năng phát triển phần mềm và tìm kiếm cơ hội tham gia trực tiếp vào các dự án thi đấu thực tế trong tương lai.
 
+#### Một số hình ảnh khi tham gia sự kiện
+
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event4.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event4.1.png)
 

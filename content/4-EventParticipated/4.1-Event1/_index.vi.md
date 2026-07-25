@@ -80,10 +80,5 @@ Kiến thức nền tảng luôn là giá trị cốt lõi. AI chỉ là công c
 
 #### Một số hình ảnh khi tham gia sự kiện
 
-
-
-
-
-
-![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/2aOboQmASENbcZPY0OHURXVyRcYrVRtq8QvyQsim.png)
-![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/2aOboQmASEbc3tYshWJgnsNzoWRoEefXZjW7mVBg.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/event1.1.png)
