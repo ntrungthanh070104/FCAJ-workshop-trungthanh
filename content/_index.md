@@ -29,7 +29,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 17/04/2026 to 30/07/2026
 
-![Your profile picture](/FCAJ-workshop-trungthanh/images/Thanh.png)
+![Cognito flow](/FCAJ-workshop-trungthanh/images/5-Workshop/service-image/Thanh.png)
 
 ### Report Content
 
